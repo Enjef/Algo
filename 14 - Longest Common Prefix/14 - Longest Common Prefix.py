@@ -21,4 +21,4 @@ class Solution:
 
 
 x = Solution()
-print(x.longestCommonPrefix(["aaa","aa","aaa"]))
+print(x.longestCommonPrefix(["aaa", "aa", "aaa"]))

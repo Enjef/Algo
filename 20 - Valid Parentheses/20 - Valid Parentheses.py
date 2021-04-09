@@ -22,9 +22,7 @@ class Solution:
                 if temp and s[i] == dict_a[temp[-1]]:
                     temp = temp[:-1]
                     continue
-        if not temp:
-            return True
-        return False
+        return temp == ''
 
 
 x = Solution()

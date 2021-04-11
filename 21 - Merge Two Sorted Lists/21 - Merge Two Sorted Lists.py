@@ -11,13 +11,9 @@ class Solution:
             if l1.val <= l2.val:
                 l3.next = l1
                 l1 = l1.next
-                l3 = l3.next
             elif l1.val >= l2.val:
                 l3.next = l2
                 l2 = l2.next
-                l3 = l3.next
-        if l1:
-            l3.next = l1
-        if l2:
-            l3.next = l2
+            l3 = l3.next
+        l3.next = l1 or l2
         return out.next

@@ -17,7 +17,7 @@ class Solution:
             current = current.next
             x_prev = x_node
             x_node = x_node.next
-        if x_prev == None:
+        if x_prev is None:
             return head.next
         x_prev.next = x_node.next
         return head

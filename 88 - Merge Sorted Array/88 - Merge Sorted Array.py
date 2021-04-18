@@ -13,7 +13,6 @@ class Solution:
                 j -= 1
         if j > -1:
             nums1[:j] = nums2[:j]
-        return nums1
 
 
 x = Solution()

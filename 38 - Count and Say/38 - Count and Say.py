@@ -22,6 +22,7 @@ class Solution:
             d_str = temp
         return d_str
 
+# if count = 0 lines 4 to 8 can be removed 
 
 s = '123'
 print(s[0]+s[2]+str(5))

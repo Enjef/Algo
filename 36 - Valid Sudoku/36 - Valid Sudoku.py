@@ -21,9 +21,7 @@ class Solution:
                 for row in range(3):
                     check += board[row + block_row][block:block+3]
                 check = [x for x in check if x != '.']
-                foo = len(check)
-                bar = len(set(check))
-                if foo != bar:
+                if len(check) != len(set(check)):
                     return False
                 check = []
         for i in range(9):

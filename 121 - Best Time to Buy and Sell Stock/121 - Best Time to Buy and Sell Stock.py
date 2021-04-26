@@ -6,5 +6,6 @@ class Solution:
             max_profit = max(price - min_price, max_profit)
         return max_profit
 
+
 x = Solution()
-print(x.maxProfit([7,1,5,3,6,4]))
+print(x.maxProfit([7, 1, 5, 3, 6, 4]))

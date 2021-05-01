@@ -8,8 +8,7 @@ class Solution:
     def isSymmetric(self, root) -> bool:
         if not root:
             return True
-        else:
-            return self.compare(root.left, root.right)
+        return self.compare(root.left, root.right)
 
     def compare(self, left, right):
         if left and right:

@@ -8,3 +8,6 @@ class Solution:
             if s[-i] != t[-i]:
                 return False
         return True
+
+    def short(self, s: str, t: str) -> bool:
+        return sorted(s) == sorted(t)

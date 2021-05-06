@@ -15,3 +15,11 @@ class Solution:
             head = head_next
         head.next = prev
         return head
+
+    def short(self, head: ListNode) -> ListNode:
+        if not head:
+            return None
+        prev = None
+        while head:
+            head, head.next, prev = head.next, prev, head
+        return prev

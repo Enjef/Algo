@@ -21,5 +21,5 @@ class Solution:
             return None
         prev = None
         while head:
-            head, head.next, prev = head.next, prev, head
+            head.next, prev, head = prev, head, head.next
         return prev

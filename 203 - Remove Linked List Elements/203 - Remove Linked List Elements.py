@@ -18,8 +18,7 @@ class Solution(object):
         while cur:
             if cur.val == val:
                 prev.next = cur.next
-                cur = cur.next
             else:
                 prev = cur
-                cur = cur.next
+            cur = cur.next
         return head

@@ -17,6 +17,20 @@ class Solution:
             return True
         return False
 
+    def isIsomorphic_one_dict_stolen(self, s: str, t: str) -> bool:
+        if not s and not t:
+            return True
+        if len(s) != len(t):
+            return False
+        d = {}
+        for i, ch in enumerate(s):
+            if ch not in d and t[i] not in d.values():
+                d[ch] = t[i]
+            elif ch in d and d[ch] == t[i]:
+                continue
+            else:
+                return False
+        return True
 
 x = Solution()
 print(x.isIsomorphic("egg", "add"))

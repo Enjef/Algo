@@ -1,17 +1,15 @@
 class Solution:
-    def maxSubArray(self, nums) -> int:
-        i, j = 0, len(nums)
-        a_max = float('-inf')
-        while i < j:
-            curr = sum(nums[i:j])
-            print(curr, nums[i:j])
-            if curr > a_max:
-                a_max = curr
-            if nums[i] < nums[j-1]:
-                i += 1
-            else:
-                j -= 1
-        return a_max
+    def maxSubArray(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        cur_sum = max_sum = nums[0]
+        for i in range(1, len(nums)):
+            cur_sum = max(cur_sum + nums[i], nums[i])
+            max_sum = max(max_sum, cur_sum)
+           
+        return max_sum
 
 
 x = Solution()

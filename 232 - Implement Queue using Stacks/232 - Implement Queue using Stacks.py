@@ -23,7 +23,6 @@ class MyQueue:
         Get the front element.
         """
         return self.list[0]
-        
 
     def empty(self) -> bool:
         """

@@ -15,7 +15,6 @@ class MyStack:
         while self.queue:
             self.temp.append(self.queue.pop(0))
         self.queue, self.temp = self.temp, self.queue
-        
 
     def pop(self) -> int:
         """

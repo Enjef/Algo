@@ -1,7 +1,7 @@
 class Solution:
     def thirdMax(self, nums):
         nums.sort()
-        one_max = float('-inf') 
+        one_max = float('-inf')
         two_max = float('-inf')
         three_max = float('-inf')
         for num in nums:
@@ -11,3 +11,7 @@ class Solution:
             return max(two_max, three_max)
         else:
             return one_max
+
+    def thirdMax_index(self, nums):
+        nums = sorted(set(nums))
+        return nums[-3] if len(nums) >= 3 else nums[-1]

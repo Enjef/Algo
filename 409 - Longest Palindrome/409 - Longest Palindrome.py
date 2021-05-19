@@ -17,3 +17,12 @@ class Solution:
         if odd:
             out += 1
         return out
+
+    def longestPalindrome_set(self, s: str) -> int:
+        s_set = set()
+        for i in s:
+            if i not in s_set:
+                s_set.add(i)
+            else:
+                s_set.remove(i)
+        return len(s) if not s_set else len(s) - len(s_set) + 1

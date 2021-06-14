@@ -5,7 +5,7 @@ class Solution(object):
         :rtype: int
         """
         out = set()
-        cur = '' 
+        cur = ''
         for i in word:
             if cur and not i.isdigit():
                 out.add(int(cur))

@@ -5,8 +5,8 @@ class Solution:
             res[i] = s[indices.index(i)]
         return ''.join(res)
 
-    def restoreString(self, s: str, indices: List[int]) -> str:  # best
+    def restoreString_best(self, s: str, indices: List[int]) -> str:  # best
         result = [""] * len(s)
         for i, letter in enumerate(s):
             result[indices[i]] = letter
-        return "".join(result) 
+        return "".join(result)

@@ -1,5 +1,5 @@
 class Solution:
-    def countMatches_my(self, items, ruleKey, ruleValue): #  45.05%
+    def countMatches_my(self, items, ruleKey, ruleValue):  # 45.05%
         f_map = {'type': 0, 'color': 1, 'name': 2}
         count = 0
         for i in items:

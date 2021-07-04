@@ -17,3 +17,18 @@ class Solution(object):
         vals = mapx.values()
         index_list = [i for i, x in enumerate(vals) if x == min(vals)]
         return [keys[i] for i in index_list]
+
+    def findRestaurant_best(self, list1, list2):
+        d = {}
+        for i, x in enumerate(list1):
+            d[x] = i
+        m = float('inf')
+        res = []
+        for i, x in enumerate(list2):
+            if x in d:
+                if i + d[x] < m:
+                    m = i+d[x]
+                    res = [x]
+                elif i+d[x] == m:
+                    res.append(x)
+        return res

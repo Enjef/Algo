@@ -70,8 +70,8 @@ class Solution:
                 if diff in pair_map:
                     for pair in pair_map[diff]:
                         x, y = pair
-                        if (i!=x and i!=y) and (j!=x and j!=y):
-                            temp = [nums[i],nums[j],nums[x],nums[y]]
+                        if (i != x and i != y) and (j != x and j != y):
+                            temp = [nums[i], nums[j], nums[x], nums[y]]
                             result.add(tuple(sorted(temp)))
                 pair_map[cur].append((i, j))
         result = sorted(list(result))

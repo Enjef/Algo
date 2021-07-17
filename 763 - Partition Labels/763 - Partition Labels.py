@@ -26,7 +26,6 @@ class Solution:
         cur_end = 0
         print(end)
         for i, c in enumerate(s):
-            print(i, c)
             cur_end = max(cur_end, end[c])
             if cur_end == i:
                 ans.append(cur_end - cur_start + 1)

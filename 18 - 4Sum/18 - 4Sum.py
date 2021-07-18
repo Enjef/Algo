@@ -67,12 +67,13 @@ class Solution:
                 diff = target - cur
                 if cur not in pair_map:
                     pair_map[cur] = [[i, j]]
+                else:
+                    pair_map[cur].append((i, j))
                 if diff in pair_map:
                     for pair in pair_map[diff]:
                         x, y = pair
                         if (i != x and i != y) and (j != x and j != y):
                             temp = [nums[i], nums[j], nums[x], nums[y]]
                             result.add(tuple(sorted(temp)))
-                pair_map[cur].append((i, j))
         result = sorted(list(result))
         return result

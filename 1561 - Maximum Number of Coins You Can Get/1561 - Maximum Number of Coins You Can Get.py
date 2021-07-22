@@ -15,4 +15,4 @@ class Solution:
         return coins
 
     def maxCoins_short_top_3(self, piles: List[int]) -> int:
-        return sum(sorted(piles)[len(piles)//3 :: 2])
+        return sum(sorted(piles)[len(piles)//3::2])

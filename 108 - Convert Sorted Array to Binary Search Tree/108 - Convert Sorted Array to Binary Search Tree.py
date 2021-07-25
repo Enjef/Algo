@@ -27,6 +27,7 @@ def sorted_array_to_bst(nums):  # best 70.85% 59.70%
         return TreeNode(nums[m], left, right)
     return construct(0, len(nums) - 1)
 
+
 class Solution_best:
     def sortedArrayToBST(self, nums: List[int]) -> TreeNode:
         return sorted_array_to_bst(nums)

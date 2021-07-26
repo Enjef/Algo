@@ -31,6 +31,5 @@ class Solution:
             return out
         return ext + out
 
-
-x = Solution()
-print(x.addBinary('11', '1'))
+    def addBinary_best(self, a: str, b: str) -> str:
+        return bin(int(a, 2) + int(b, 2)).replace("0b", "")

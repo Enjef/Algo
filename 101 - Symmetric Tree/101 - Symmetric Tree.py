@@ -17,4 +17,4 @@ class Solution:
                 self.compare(left.left, right.right) and
                 self.compare(left.right, right.left)
             )
-        return left == right    
+        return left == right

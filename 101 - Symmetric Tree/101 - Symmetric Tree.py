@@ -5,7 +5,7 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def isSymmetric(self, root: TreeNode) -> bool:
+    def isSymmetric(self, root: TreeNode) -> bool:  # 60.62% 78.13 %
         if not root:
             return True
         return self.compare(root.left, root.right)
@@ -18,3 +18,19 @@ class Solution:
                 self.compare(left.right, right.left)
             )
         return left == right
+
+    def isSymmetric_stack(self, root):  # 60.62% 92.52%
+        if not root:
+            return True
+        stack = [root.left, root.right]
+        while stack:
+            right = stack.pop()
+            left = stack.pop()
+            if not right and not left:
+                continue
+            if not right and left or not left and right:
+                return False
+            if right.val != left.val:
+                return False
+            stack += [left.left, right.right, left.right, right.left]
+        return True

@@ -25,3 +25,21 @@ class Solution:
             self.rangeSumBST_best(root.left, low, high) +
             self.rangeSumBST_best(root.right, low, high)
         )
+
+    def rangeSumBST_stack(self, root: TreeNode, low: int, high: int) -> int:
+        stack = [root]  # 89.88% 86.34%
+        out = 0
+        while stack:
+            cur = stack.pop()
+            if cur is None:
+                continue
+            if low <= cur.val <= high:
+                out += cur.val
+            if cur.val < low:
+                stack.append(cur.right)
+            elif cur.val > high:
+                stack.append(cur.left)
+            else:
+                stack.append(cur.right)
+                stack.append(cur.left)
+        return out

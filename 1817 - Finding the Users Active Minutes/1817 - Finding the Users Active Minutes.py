@@ -59,7 +59,7 @@ class Solution:
             if(logs[i] == logs[j]):
                 logs.pop(j)
             else:
-                i += 1 
+                i += 1
         i = 0
         while(i < len(logs)):
             j = i

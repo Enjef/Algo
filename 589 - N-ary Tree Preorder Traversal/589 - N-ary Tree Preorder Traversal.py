@@ -19,7 +19,7 @@ class Solution:
             stack.extend(cur.children[::-1])
         return out
 
-    def preorder_best(self, root: 'Node') -> List[int]:  # best
+    def preorder_best(self, root: 'Node') -> List[int]:
         output = []
 
         def dfs(node):

@@ -14,7 +14,7 @@ class Solution:
                 currGreatest = temp
         return arr
 
-    def replaceElements_one(self, arr: List[int]) -> List[int]:  # 81% 99% 
+    def replaceElements_one(self, arr: List[int]) -> List[int]:  # 81% 99%
         x_max = -1
         for i in range(len(arr)-1, -1, -1):
             arr[i], x_max = x_max, max(arr[i], x_max)

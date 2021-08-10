@@ -1,5 +1,8 @@
 class Solution:
-    def kWeakestRows(self, mat: List[List[int]], k: int) -> List[int]:
+    def kWeakestRows(
+            self,
+            mat: List[List[int]],
+            k: int) -> List[int]:  # 39.39% 74.80 %
         s_map = {}
         for i in range(len(mat)):
             count = mat[i].count(1)

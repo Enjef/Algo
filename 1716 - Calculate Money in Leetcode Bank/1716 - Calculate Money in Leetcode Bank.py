@@ -17,3 +17,14 @@ class Solution:
             sum(range(n//7))*7 +
             sum(range(n//7+1, n % 7 + n//7 + 1))
         )
+
+    def totalMoney_parts(self, n: int) -> int:  # 75.24% 13.82%
+        weeks = n // 7 + 1
+        last = n % 7
+        bank = 0
+        for i in range(1, weeks):
+            for j in range(i, i+7):
+                bank += j
+        for i in range(weeks, weeks+last):
+            bank += i
+        return bank

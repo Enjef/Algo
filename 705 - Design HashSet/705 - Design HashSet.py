@@ -1,4 +1,4 @@
-class MyHashSet:
+class MyHashSet:  # 58.65% 52.62%
 
     def __init__(self):
         """

@@ -15,10 +15,10 @@ class Solution:
         return substr
 
     def stringMatching_best_memory(self, words: List[str]) -> List[str]:
-        ans=[]
+        ans = []
         for i in range(len(words)):
             for j in range(len(words)):
-                if i==j:
+                if i == j:
                     continue
                 else:
                     if (words[i] in words[j]) and words[i] not in ans:

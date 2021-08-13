@@ -12,10 +12,10 @@ class Solution:
         return [key for key, value in a_map.items() if value == 1]
 
     def uncommonFromSentences_best(self, s1: str, s2: str) -> List[str]:
-        res=[]
-        listS1, listS2=s1.split(), s2.split()
-        countS1S2=Counter(listS1+listS2)
+        res = []
+        listS1, listS2 = s1.split(), s2.split()
+        countS1S2 = Counter(listS1+listS2)
         for word in countS1S2:
-            if countS1S2[word]==1:
+            if countS1S2[word] == 1:
                 res.append(word)
         return res

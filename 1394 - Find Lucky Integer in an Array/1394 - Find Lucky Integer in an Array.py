@@ -26,3 +26,11 @@ class Solution:
             if num == arr.count(num):
                 x_max = max(x_max, num)
         return x_max
+
+    def findLucky(self, arr: List[int]) -> int:  # 69.13% 45.10%
+        freq = Counter(arr)
+        max_lucky = -1
+        for k, val in freq.items():
+            if k == val:
+                max_lucky = max(max_lucky, val)
+        return max_lucky

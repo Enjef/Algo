@@ -1,5 +1,5 @@
 class Solution:
-    def minStartValue(self, nums: List[int]) -> int:  #  65.79% 10.58%
+    def minStartValue(self, nums: List[int]) -> int:  # 65.79% 10.58%
         cur = 0
         minx = 0
         for i in nums:
@@ -15,7 +15,7 @@ class Solution:
         firstnegative = 0
         if nums[0] < 1:
             firstnegative = abs(nums[0])+1
-        for i in range(1,len(nums)):
+        for i in range(1, len(nums)):
             if nums[i-1] + nums[i] < 1:
                 my_sum = 0
                 my_sum += nums[i-1]+nums[i]

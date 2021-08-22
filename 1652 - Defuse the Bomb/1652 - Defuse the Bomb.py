@@ -32,7 +32,7 @@ class Solution:
         if k == 0:
             return [0] * len(code)
         if k < 0:
-            return self.decrypt(code[::-1], -k)[::-1]
+            return self.decrypt_best(code[::-1], -k)[::-1]
         a = code[:]
         a += a
         for i in range(len(a)-2, -1, -1):

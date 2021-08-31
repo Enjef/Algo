@@ -1,26 +1,9 @@
 class Solution:
-    def matrixReshape(
-            self,
-            mat: List[List[int]],
-            r: int,
-            c: int) -> List[List[int]]:  # 60.73% 72.96%
-        out = []
-        row = []
-        if len(mat) * len(mat[0]) != c * r:
-            return mat
-        for item in mat:
-            for el in item:
-                row.append(el)
-                if len(row) == c:
-                    out.append(row)
-                    row = []
-        return out
-
     def matrixReshape_study_plan_day_4(
             self,
             mat: List[List[int]],
             r: int,
-            c: int) -> List[List[int]]:  # 5.24% 72.96%
+            c: int) -> List[List[int]]:
         if (
                 len(mat) == r and len(mat[0]) == c
                 or len(mat) * len(mat[0]) != r * c):

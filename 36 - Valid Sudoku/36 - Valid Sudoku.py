@@ -1,20 +1,5 @@
-board = [
-    [".", ".", ".", ".", "5", ".", ".", "1", "."],
-    [".", "4", ".", "3", ".", ".", ".", ".", "."],
-    [".", ".", ".", ".", ".", "3", ".", ".", "1"],
-
-    ["8", ".", ".", ".", ".", ".", ".", "2", "."],
-    [".", ".", "2", ".", "7", ".", ".", ".", "."],
-    [".", "1", "5", ".", ".", ".", ".", ".", "."],
-
-    [".", ".", ".", ".", ".", "2", ".", ".", "."],
-    [".", "2", ".", "9", ".", ".", ".", ".", "."],
-    [".", ".", "4", ".", ".", ".", ".", ".", "."]
-]
-
-
 class Solution:
-    def isValidSudoku(self, board: List[List[str]]) -> bool:
+    def isValidSudoku(self, board: List[List[str]]) -> bool:  # 69.44% 42.84%
         check = []
         for block_row in range(0, 7, 3):
             for block in range(0, 7, 3):
@@ -33,6 +18,43 @@ class Solution:
                 return False
         return True
 
+    def isValidSudoku_lp_day_5(
+            self,
+            board: List[List[str]]) -> bool:  # 6.17% 70.08%
+        for row in range(0, 7, 3):
+            for block in range(0, 7, 3):
+                square = []
+                for i in range(3):
+                    square.extend(
+                        [x for x in board[i+row][block:block+3] if x.isdigit()]
+                    )
+                if len(set(square)) != len(square):
+                    return False
+        cols = [x for x in zip(*board)]
+        for i in range(len(board)):
+            col = [x for x in cols[i] if x.isdigit()]
+            row = [x for x in board[i] if x.isdigit()]
+            if len(col) != len(set(col)) or len(row) != len(set(row)):
+                return False
+        return True
 
-x = Solution()
-print(x.isValidSudoku(board))
+    def isValidSudoku_speed_best(self, board: List[List[str]]) -> bool:
+        row = [set() for _ in board]
+        column = [set() for _ in board]
+        square = [set() for _ in board]
+        for i in range(len(board)):
+            for j in range(len(board[0])):
+                if board[i][j] == '.':
+                    continue
+                if board[i][j] in row[i]:
+                    return False
+                row[i].add(board[i][j])
+                if board[i][j] in column[j]:
+                    return False
+                column[j].add(board[i][j])
+                curr_row = i // 3
+                curr = curr_row * 3 + j//3
+                if board[i][j] in square[curr]:
+                    return False
+                square[curr].add(board[i][j])
+        return True

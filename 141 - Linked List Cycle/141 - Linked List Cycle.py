@@ -5,7 +5,7 @@
 #         self.next = None
 
 class Solution:
-    def hasCycle(self, head: ListNode) -> bool:
+    def hasCycle(self, head: ListNode) -> bool:  # 99.72% 23.43%
         if not head:
             return False
         slow = head
@@ -17,4 +17,16 @@ class Solution:
                 break
             slow = slow.next
             fast = fast.next.next
+        return False
+
+    def hasCycle_sp_day_7(self, head: ListNode) -> bool:  # 6.20% 6.84%
+        if not head:
+            return False
+        unique = set()
+        while head:
+            if head in unique:
+                return True
+            else:
+                unique.add(head)
+                head = head.next
         return False

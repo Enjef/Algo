@@ -24,6 +24,31 @@ class Solution:
                 stack.append((cur[0], cur[1] + 1))
         return image
 
+    def floodFill_sp_day_7(
+            self,
+            image: List[List[int]],
+            sr: int,
+            sc: int,
+            newColor: int) -> List[List[int]]:  # 5.15% 52.79%
+        tar = image[sr][sc]
+        if tar == newColor:
+            return image
+
+        def helper(img, r, c, new):
+            if image[r][c] == tar:
+                image[r][c] = new
+                if r > 0:
+                    helper(image, r-1, c, new)
+                if r < len(image)-1:
+                    helper(image, r+1, c, new)
+                if c > 0:
+                    helper(image, r, c-1, new)
+                if c < len(image[0])-1:
+                    helper(image, r, c+1, new)
+            return image
+        helper(image, sr, sc, newColor)
+        return image
+
     def floodFill_best_speed(
             self,
             image: List[List[int]],

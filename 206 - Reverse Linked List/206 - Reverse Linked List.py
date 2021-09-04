@@ -23,3 +23,16 @@ class Solution:
         while head:
             head.next, prev, head = prev, head, head.next
         return prev
+
+    def reverseList_sp_day_8(
+            self,
+            head: Optional[ListNode]) -> Optional[ListNode]:  # 10.73% 46.12%
+        if not head:
+            return head
+        prev = None
+        while head:
+            temp = head.next
+            head.next = prev
+            prev = head
+            head = temp
+        return prev

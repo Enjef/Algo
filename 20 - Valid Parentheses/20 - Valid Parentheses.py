@@ -6,7 +6,7 @@ dict_a = {
 
 
 class Solution:
-    def isValid(self, s: str) -> bool:
+    def isValid(self, s: str) -> bool:  # 66.02%  64.36%
         if len(s) == 1:
             return False
         if s[0] not in dict_a:
@@ -24,6 +24,19 @@ class Solution:
                     continue
         return temp == ''
 
-
-x = Solution()
-print(x.isValid(r'(('))
+    def isValid_sp_day_9(self, s: str) -> bool:  # 96.05% 86.99%
+        p_map = {
+            ')': '(',
+            ']': '[',
+            '}': '{',
+        }
+        stack = []
+        for char in s:
+            if not stack:
+                stack.append(char)
+                continue
+            if char in p_map and stack[-1] == p_map[char]:
+                stack.pop()
+            else:
+                stack.append(char)
+        return False if stack else True

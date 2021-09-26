@@ -13,3 +13,12 @@ class Solution:
             dfs(i+1)
         dfs(0)
         return res
+
+    def subsets_v(self, nums: List[int]) -> List[List[int]]:  # 32.22% 18.42%
+        out = [[]]
+        for num in nums:
+            for item in out[:]:
+                new = item + [num]
+                if new not in out:
+                    out.append(new)
+        return out

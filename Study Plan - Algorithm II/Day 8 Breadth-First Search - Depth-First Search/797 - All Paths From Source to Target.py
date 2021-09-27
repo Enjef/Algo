@@ -9,4 +9,3 @@ class Solution:
                 helper(graph[i], path+[i], res)
             return res
         return helper(graph[0])
-      

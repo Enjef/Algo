@@ -1,5 +1,7 @@
 class Solution:
-    def countBattleships(self, board: List[List[str]]) -> int:
+    def countBattleships(
+            self,
+            board: List[List[str]]) -> int:  # 77.33%  92.35%
         total = len(board) * len(board[0])
 
         def checker(ind_m, ind_n):

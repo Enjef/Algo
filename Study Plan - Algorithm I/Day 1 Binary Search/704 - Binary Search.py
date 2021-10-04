@@ -13,3 +13,16 @@ class Solution:
             else:
                 return mid
         return -1
+
+    def search_rec(self, nums: List[int], target: int) -> int:  # 38.39% 28.09%
+        def rec(left, right):
+            if left > right:
+                return -1
+            mid = left + (right - left) // 2
+            if nums[mid] == target:
+                return mid
+            elif nums[mid] > target:
+                return rec(left, mid - 1)
+            else:
+                return rec(mid + 1, right)
+        return rec(0, len(nums)-1)

@@ -1,5 +1,5 @@
 class Solution:
-    def fib(self, n: int) -> int:
+    def fib(self, n: int) -> int:  # 99.94% 39.99%
         if n == 0:
             return 0
         if n == 1:
@@ -11,3 +11,10 @@ class Solution:
             fib_l = [fib_l[1], fib_l[0] + fib_l[1]]
             n -= 1
         return sum(fib_l)
+
+    def fib_dp(self, n: int) -> int:  # 33.64% 39.99%
+        dp = [0, 1]
+        while n:
+            n -= 1
+            dp[0], dp[1] = dp[1], dp[0] + dp[1]
+        return dp[0]

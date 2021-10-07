@@ -6,7 +6,7 @@ class Solution:
             if i - jump_max >= 0:
                 return False
         return True
-        
+
     def canJump_dp(self, nums: List[int]) -> bool:  # 57.41% 35.65%
         if len(nums) == 1:
             return True

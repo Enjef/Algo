@@ -1,5 +1,5 @@
 class Solution:
-    def maxProfit(self, prices) -> int:
+    def maxProfit(self, prices) -> int:  # 79.76% 65.01%
         price_min, price_max, profit = float('inf'), 0, 0
         for price in prices:
             if price_min == price_max == price:
@@ -28,5 +28,11 @@ class Solution:
         return profit
 
 
-x = Solution()
-print(x.maxProfit([7, 6, 4, 3, 1]))
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:  # 57.85% 98.89%
+        profit = 0
+        price_min = prices[0]
+        for price in prices:
+            profit += price - price_min if price - price_min > 0 else 0
+            price_min = price
+        return profit

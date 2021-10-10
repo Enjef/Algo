@@ -27,9 +27,7 @@ class Solution:
             prev = cur
         return profit
 
-
-class Solution:
-    def maxProfit(self, prices: List[int]) -> int:  # 57.85% 98.89%
+    def maxProfit_dp_day_7(self, prices: List[int]) -> int:  # 57.85% 98.89%
         profit = 0
         price_min = prices[0]
         for price in prices:

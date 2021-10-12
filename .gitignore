@@ -1,1 +1,7 @@
 .idea/*
+test.py
+test.ipynb
+.ipynb_checkpoints
+compare1.py
+compare2.py
+plot.py

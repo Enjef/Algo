@@ -1,0 +1,36 @@
+class Solution:
+    def isIsomorphic(self, s: str, t: str) -> bool:
+        if len(s) != len(t):
+            return False
+        s_dict = {}
+        t_dict = {}
+        for i in range(len(s)):
+            if s[i] not in s_dict:
+                s_dict[s[i]] = [i]
+            else:
+                s_dict[s[i]].append(i)
+            if t[i] not in t_dict:
+                t_dict[t[i]] = [i]
+            else:
+                t_dict[t[i]].append(i)
+        if list(s_dict.values()) == list(t_dict.values()):
+            return True
+        return False
+
+    def isIsomorphic_one_dict_stolen(self, s: str, t: str) -> bool:
+        if not s and not t:
+            return True
+        if len(s) != len(t):
+            return False
+        d = {}
+        for i, ch in enumerate(s):
+            if ch not in d and t[i] not in d.values():
+                d[ch] = t[i]
+            elif ch in d and d[ch] == t[i]:
+                continue
+            else:
+                return False
+        return True
+
+x = Solution()
+print(x.isIsomorphic("egg", "add"))

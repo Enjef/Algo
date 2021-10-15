@@ -20,3 +20,15 @@ class Solution:
             if not cur_one.right and cur_two.right:
                 cur_one.right = cur_two.right
         return root1
+
+    def mergeTrees_rec(
+            self,
+            root1: Optional[TreeNode],
+            root2: Optional[TreeNode]) -> Optional[TreeNode]:  # 64.24% 77.23%
+        if root1 and root2:
+            root = TreeNode(root1.val + root2.val)
+            root.left = self.mergeTrees(root1.left, root2.left)
+            root.right = self.mergeTrees(root1.right, root2.right)
+            return root
+        else:
+            return root1 or root2

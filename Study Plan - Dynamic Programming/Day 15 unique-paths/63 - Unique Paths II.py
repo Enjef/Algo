@@ -20,3 +20,28 @@ class Solution:
                 if not obstacleGrid[i][j]:
                     dp[i][j] = dp[i-1][j] + dp[i][j-1]
         return dp[-1][-1]
+
+    def uniquePathsWithObstacles_list_dp(
+            self,
+            obstacleGrid: List[List[int]]) -> int:
+        '''
+            random test results
+            speed 24.73% - 99.88%
+            memory 32.59% - 60.64%
+            last 99.88% 60.64%
+        '''
+        m = len(obstacleGrid)
+        n = len(obstacleGrid[0])
+        dp = [0 for _ in range(n)]
+        dp[0] = 1
+        for i in range(m):
+            for j in range(n):
+                if j == 0:
+                    if obstacleGrid[i][j]:
+                        dp[j] = 0
+                    continue
+                if obstacleGrid[i][j]:
+                    dp[j] = 0
+                if not obstacleGrid[i][j]:
+                    dp[j] += dp[j-1]
+        return dp[-1]

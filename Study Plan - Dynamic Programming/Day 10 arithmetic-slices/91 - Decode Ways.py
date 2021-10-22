@@ -29,4 +29,3 @@ class Solution:
             dp[0] = dp[1]
             dp[1] = fail_check
         return dp[-1]
-

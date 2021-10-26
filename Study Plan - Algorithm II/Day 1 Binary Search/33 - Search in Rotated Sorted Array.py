@@ -29,3 +29,34 @@ class Solution:
                     right = mid - 1
             return -1
         return checker(nums, left_a, right_a, target)
+
+    def search_25102021(
+            self,
+            nums: List[int],
+            target: int) -> int:  # 19.30% 80.48%
+        def bin_s(left, right):
+            while left <= right:
+                mid = left + (right - left) // 2
+                if nums[mid] == target:
+                    return mid
+                if nums[mid] < target:
+                    left = mid + 1
+                else:
+                    right = mid - 1
+            return -1
+        i, j = 0, len(nums) - 1
+        out = -1
+        while i <= j:
+            mid = i + (j - i) // 2
+            for index in [i, mid, j]:
+                if target == nums[index]:
+                    return index
+            if nums[i] < nums[mid]:
+                out = bin_s(i, mid)
+                i = mid + 1
+            else:
+                out = bin_s(mid, j)
+                j = mid - 1
+            if out > -1:
+                return out
+        return out

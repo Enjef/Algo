@@ -1,5 +1,8 @@
 class Solution:
-    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+    def searchMatrix(
+            self,
+            matrix: List[List[int]],
+            target: int) -> bool:  # 90.37% 33.09%
         left, right = 0, len(matrix) * len(matrix[0]) - 1
         while left <= right:
             mid = left + (right - left) // 2

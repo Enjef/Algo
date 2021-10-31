@@ -15,7 +15,7 @@ class Solution:
             stack = level
         return root
 
-    def connect_second_try(self, root: 'Node') -> 'Node':  # 93.23%  82.41%
+    def connect_second_try(self, root: 'Node') -> 'Node':  # 93.23% 82.41%
         if not root:
             return root
         stack = [root.left, root.right]
@@ -32,5 +32,22 @@ class Solution:
                 if i == len(stack)-1:
                     continue
                 cur.next = stack[i+1]
+            stack = temp
+        return root
+
+    def connect_refactored(self, root: 'Node') -> 'Node':  # 97.93% 82.41%
+        if not root:
+            return root
+        stack = [root]
+        while stack:
+            temp = []
+            for i in range(len(stack)):
+                cur = stack[i]
+                if i < len(stack)-1:
+                    cur.next = stack[i+1]
+                if cur.left:
+                    temp.append(cur.left)
+                if cur.right:
+                    temp.append(cur.right)
             stack = temp
         return root

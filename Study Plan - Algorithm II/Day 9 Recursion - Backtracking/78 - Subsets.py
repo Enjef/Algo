@@ -22,3 +22,12 @@ class Solution:
                 if new not in out:
                     out.append(new)
         return out
+
+    def subsets_v_2(self, nums: List[int]) -> List[List[int]]:  # 67.92% 51.62%
+        out = [[]]
+        for num in nums:
+            temp = []
+            for sample in out:
+                temp.append(sample+[num])
+            out.extend(temp)
+        return out

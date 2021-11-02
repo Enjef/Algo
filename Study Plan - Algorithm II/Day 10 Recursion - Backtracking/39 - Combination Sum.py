@@ -14,3 +14,18 @@ class Solution:
                 helper(part[:]+[num], nums[i:], tar-num)
             return path
         return helper([], candidates, target)
+
+    def combinationSum(
+            self,
+            candidates: List[int],
+            target: int) -> List[List[int]]:  # 6.13% 51.98%
+        def helper(arr, target, cur=tuple(), out=set()):
+            if target < 0:
+                return out
+            if not target:
+                out.add(tuple(sorted(cur)))
+                return out
+            for i in range(len(arr)):
+                helper(arr, target-arr[i], cur+(arr[i],), out)
+            return out
+        return helper(candidates, target)

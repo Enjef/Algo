@@ -15,7 +15,7 @@ class Solution:
             return path
         return helper([], candidates, target)
 
-    def combinationSum(
+    def combinationSum_tuple_set(
             self,
             candidates: List[int],
             target: int) -> List[List[int]]:  # 6.13% 51.98%

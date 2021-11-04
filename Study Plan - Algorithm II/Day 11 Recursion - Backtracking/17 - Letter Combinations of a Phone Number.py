@@ -19,3 +19,20 @@ class Solution:
                     temp.append(base + char)
             out = temp
         return out
+
+    def letterCombinations_v2(self, digits: str) -> List[str]:  # 97.26% 62.90%
+        if not digits:
+            return []
+        table = [
+            'abc', 'def',
+            'ghi', 'jkl', 'mno',
+            'pqrs', 'tuv', 'wxyz',
+        ]
+        out = ['']
+        for digit in digits:
+            temp = []
+            for char in table[int(digit)-2]:
+                for item in out:
+                    temp.append(item+char)
+            out = temp
+        return out

@@ -10,3 +10,11 @@ class Solution:
             cur = i + num
             max_jump = max(cur, max_jump)
         return True
+
+    def canJump(self, nums: List[int]) -> bool:  # 94.38% 91.40%
+        n = len(nums)
+        j = n - 1
+        for i in range(len(nums)-1, -1, -1):
+            if i + nums[i] >= j:
+                j = i
+        return j == 0

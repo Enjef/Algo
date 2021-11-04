@@ -48,7 +48,7 @@ class Solution:
                     return True
         return False
 
-     def exist_v2_refactored(
+    def exist_v2_refactored(
             self,
             board: List[List[str]],
             word: str) -> bool:  # 49.26% 45.83%

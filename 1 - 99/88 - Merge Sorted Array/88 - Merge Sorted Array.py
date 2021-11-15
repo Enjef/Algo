@@ -14,7 +14,10 @@ class Solution:
         if j > -1:
             nums1[:j] = nums2[:j]
 
-
-x = Solution()
-# print('out', x.merge([1,2,3,0,0,0], 3, [2,5,6], 3))
-print('out', x.merge([0], 0, [1], 1))
+    def merge_best_speed(self, nums1, m, nums2, n) -> None:
+        """
+        Do not return anything, modify nums1 in-place instead.
+        """
+        for i in range(n):
+            nums1[m+i] = nums2[i]
+        nums1.sort()

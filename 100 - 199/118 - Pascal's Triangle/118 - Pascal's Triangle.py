@@ -37,3 +37,14 @@ class Solution(object):
             for j in range(1, len(triangle[i])-1):
                 triangle[i][j] = triangle[i-1][j-1] + triangle[i-1][j]
         return triangle
+
+    def generate_ds_d4(self, numRows: int) -> List[List[int]]:  # 66.99% 81.94%
+        out = [[1]]
+        for _ in range(numRows-1):
+            new_row = [1]
+            prev = out[-1]
+            for i in range(1, len(prev)):
+                new_row.append(prev[i-1]+prev[i])
+            new_row.append(1)
+            out.append(new_row)
+        return out

@@ -36,3 +36,24 @@ class Solution:
                     out.append([])
         out.pop()
         return out
+
+    def matrixReshape_sp_v2(
+            self,
+            mat: List[List[int]],
+            r: int,
+            c: int) -> List[List[int]]:  # 87.41% 19.87%
+        m, n = len(mat), len(mat[0])
+        if m == r and n == c or m * n != r * c:
+            return mat
+        new_mat = [[0]*c for _ in range(r)]
+        ii = jj = 0
+        for i in range(m):
+            for j in range(n):
+                new_mat[ii][jj] = mat[i][j]
+                jj += 1
+                if jj == c:
+                    jj = 0
+                    ii += 1
+                    if ii == r:
+                        ii = 0
+        return new_mat

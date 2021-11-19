@@ -29,3 +29,12 @@ class Solution:
             if key not in c1 or key not in c2 or c1[key] != c2[key]:
                 return False
         return True
+
+    def isAnagram_best_memory(self, s: str, t: str) -> bool:
+        s_dict = {}
+        t_dict = {}
+        for letter in s:
+            s_dict[letter] = s_dict.get(letter, 0) + 1
+        for letter in t:
+            t_dict[letter] = t_dict.get(letter, 0) + 1
+        return s_dict == t_dict

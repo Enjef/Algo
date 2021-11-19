@@ -7,3 +7,14 @@ class Solution:
             if x_dict[char] == 1:
                 return i
         return -1
+
+    def firstUniqChar_v2(self, s: str) -> int:  # 63.32% 45.45%
+        count = {}
+        n = len(s)
+        for i, char in enumerate(s):
+            if char in count:
+                count[char] = n + 1
+            else:
+                count[char] = i
+        out = min(count.values())
+        return out if out != n + 1 else -1

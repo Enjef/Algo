@@ -33,3 +33,12 @@ class Solution:
             if ransomNote.count(i) > magazine.count(i):
                 return False
         return True
+
+    def canConstruct_best_memory(self, ransomNote: str, magazine: str) -> bool:
+        from collections import Counter
+        rc = Counter(ransomNote)
+        mc = Counter(magazine)
+        for l in rc:
+            if rc[l] > mc[l]:
+                return False
+        return True

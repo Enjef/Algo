@@ -44,3 +44,19 @@ class Solution(object):
                 prev = prev.next
             cur = cur.next
         return head
+
+    def removeElements_best_memory(
+            self,
+            head: Optional[ListNode],
+            val: int) -> Optional[ListNode]:
+        dummynode=ListNode()
+        dummynode.next=head
+        travelnode=dummynode
+        while(travelnode.next!=None):
+            if travelnode.next.val!=val:
+                travelnode=travelnode.next
+            else:
+                temp=ListNode()
+                temp=travelnode.next
+                travelnode.next=temp.next
+        return dummynode.next

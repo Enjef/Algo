@@ -21,7 +21,10 @@ class Solution:
                 out += word
         return len(out)
 
-    def countCharacters_1(self, words: List[str], chars: str) -> int:  # 84.88%
+    def countCharacters_1(
+            self,
+            words: List[str],
+            chars: str) -> int:  # 89.41% 93.20%
         out = ''
         for word in words:
             for char in word:
@@ -32,3 +35,21 @@ class Solution:
             if append:
                 out += word
         return len(out)
+
+    def countCharacters_mock(
+            self,
+            words: List[str],
+            chars: str) -> int:  # 78.76% 26.73%
+        out = 0
+        chars_count = {}
+        for char in chars:
+            chars_count[char] = chars_count.get(char, 0) + 1
+        for word in words:
+            for char in set(word):
+                if (
+                        char not in chars_count or
+                        word.count(char) > chars_count.get(char)):
+                    break
+            else:
+                out += len(word)
+        return out

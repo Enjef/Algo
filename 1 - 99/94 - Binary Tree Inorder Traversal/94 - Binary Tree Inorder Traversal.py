@@ -15,59 +15,54 @@ class Solution:
         self.map.append(root.val)
         return self.inorderTraversal(root.right)
 
-    def preorderTraversal_rec(
+    def inorderTraversal_rec(
             self,
-            root: Optional[TreeNode]) -> List[int]:  # 63.73% 75.82%
-        def dfs(root, out):
-            if not root:
+            root: Optional[TreeNode]) -> List[int]:  # 64.09% 14.30%
+        def dfs(node, out):
+            if not node:
                 return out
-            out.append(root.val)
-            if not root.left and not root.right:
-                return out
-            if root.left:
-                dfs(root.left, out)
-            if root.right:
-                dfs(root.right, out)
+            dfs(node.left, out)
+            out.append(node.val)
+            dfs(node.right, out)
             return out
         return dfs(root, [])
 
-    def preorderTraversal_stack(
+    def inorderTraversal(
             self,
-            root: Optional[TreeNode]) -> List[int]:  # 23.88% 75.82%
+            root: Optional[TreeNode]) -> List[int]:  # 19.54% 48.24%
         out = []
-        stack = [root]
+        stack = [(root, False)]
         while stack:
-            node = stack.pop()
+            node, visited = stack.pop()
+            if visited:
+                out.append(node.val)
+                continue
             if not node:
                 continue
-            out.append(node.val)
-            stack.extend([node.right, node.left])
+            stack.append((node.right, False))
+            stack.append((node, True))
+            stack.append((node.left, False))
         return out
 
-    def preorderTraversal_best_speed(
+    def inorderTraversal_best_speed(
             self,
             root: Optional[TreeNode]) -> List[int]:
-        def traverse(root=root, nodes=[]):
-            if root is not None:
-                nodes.append(root.val)
-                traverse(root.left, nodes)
-                traverse(root.right, nodes)
-            return nodes
-        return traverse()
-
-    def preorderTraversal_best_memory(
-            self,
-            root: Optional[TreeNode]) -> List[int]:
-        if root is None:
+        if not root:
             return []
-        stack = [root,]
-        out = []
-        while len(stack) > 0:
-            root = stack.pop()
-            if root is not None:
-                out.append(root.val)
-                if root.right is not None:
-                    stack.append(root.right)
-                if root.left is not None:
-                    stack.append(root.left)
-        return out
+        return (
+            self.inorderTraversal(root.left) +
+            [root.val] +
+            self.inorderTraversal(root.right)
+        )
+
+    def inorderTraversal_2nd_best_speed(self, root: TreeNode) -> List[int]:
+        ans,ro_list = [],[]
+        while ro_list or root:
+            if root != None:
+                ro_list.append(root)
+                root = root.left
+            elif ro_list != None:
+                root = ro_list.pop()
+                ans.append(root.val)                
+                root = root.right
+        return ans

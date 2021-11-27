@@ -5,7 +5,10 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def searchBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
+    def searchBST(
+            self,
+            root: Optional[TreeNode],
+            val: int) -> Optional[TreeNode]:  # 5.00% 32.96%
         while root:
             if root.val == val:
                 return root

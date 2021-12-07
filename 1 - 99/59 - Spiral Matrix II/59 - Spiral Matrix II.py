@@ -156,3 +156,28 @@ class Solution:
             row += 1
             col += 1
         return res
+
+    def generateMatrix_mock(self, n: int) -> List[List[int]]:  # 23.08% 19.33%
+        matrix = [[0]*n for _ in range(n)]
+        left, up, right, down = 0, 0, n, n
+        cur = 1
+        i = 0
+        j = 0
+        while up < down:
+            for j in range(left, right):
+                matrix[i][j] = cur
+                cur += 1
+            up += 1
+            for i in range(up, down):
+                matrix[i][j] = cur
+                cur += 1
+            right -= 1
+            for j in range(right-1,left-1,-1):
+                matrix[i][j] = cur
+                cur += 1
+            down -= 1
+            for i in range(down-1,up-1,-1):
+                matrix[i][j] = cur
+                cur += 1
+            left += 1
+        return matrix

@@ -17,3 +17,10 @@ class Solution:
         for i in range(0, len(nums), 2):
             out += nums[i]
         return out
+
+    def arrayPairSum_best_speed(self, nums: List[int]) -> int:
+        nums.sort()
+        totalSum = 0
+        for num in nums[::2]:
+            totalSum += num
+        return totalSum

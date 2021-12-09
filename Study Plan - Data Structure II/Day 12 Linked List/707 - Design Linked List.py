@@ -1,6 +1,6 @@
 class MyLinkedList:
 
-    def __init__(self):
+    def __init__(self):  # 99.14% 91.22%
         self.list = []
 
     def get(self, index: int) -> int:

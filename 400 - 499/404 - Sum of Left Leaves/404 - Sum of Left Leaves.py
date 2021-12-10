@@ -5,7 +5,7 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def sumOfLeftLeaves(self, root: TreeNode) -> int:
+    def sumOfLeftLeaves(self, root: TreeNode) -> int:  # 97.46% 94.49 %
         stack = [(root, False)]
         out_sum = 0
         while stack:

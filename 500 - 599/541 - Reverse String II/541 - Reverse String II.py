@@ -1,5 +1,5 @@
 class Solution:
-    def reverseStr_join_reversed(self, s: str, k: int) -> str:
+    def reverseStr_join_reversed(self, s: str, k: int) -> str:  # 91.95% 73.50%
         if len(s) < k:
             s = s[::-1]
             return s
@@ -10,7 +10,7 @@ class Solution:
             s = s[:i] + ''.join(reversed(s[i:i+k])) + s[i+k:]
         return s
 
-    def reverseStr(self, s: str, k: int) -> str:
+    def reverseStr(self, s: str, k: int) -> str:  # 78.70% 98.72%
         if len(s) < k:
             s = s[::-1]
             return s

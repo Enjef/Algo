@@ -32,6 +32,5 @@ class Solution:
                 out += s[i: i+k]
                 flag = True
         if len(out) < len(s):
-            out += s[i: i+len(s)-len(out)]
+            out += s[i:i+len(s)-len(out)]
         return out
-        

@@ -8,7 +8,7 @@ class Solution:
     def buildTree(
             self,
             preorder: List[int],
-            inorder: List[int]) -> Optional[TreeNode]:
+            inorder: List[int]) -> Optional[TreeNode]:  # 34.76% 53.42%
         if inorder:
             ind = inorder.index(preorder.pop(0))
             root = TreeNode(inorder[ind])

@@ -19,3 +19,10 @@ class Solution:
         for _ in range(n):
             dp[0], dp[1], dp[2] = dp[1], dp[2], dp[0] + dp[1] + dp[2]
         return dp[0]
+
+class Solution:
+    def tribonacci(self, n: int) -> int:  # 94.73% 73.35%
+        a, b, c = 0, 1, 1
+        for _ in range(n):
+            a, b, c = b, c, a + b + c
+        return a

@@ -18,3 +18,10 @@ class Solution:
             n -= 1
             dp[0], dp[1] = dp[1], dp[0] + dp[1]
         return dp[0]
+
+    def fib_v3(self, n: int) -> int:  # 85.12% 70.93%
+        a = 0
+        b = 1
+        for _ in range(n):
+            a, b = a + b, a
+        return a

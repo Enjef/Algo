@@ -71,3 +71,82 @@ class MyQueue_study_plan_day_9:  # 94.30% 44.31%
         Returns whether the queue is empty.
         """
         return self.size == 0
+
+
+class MyQueue_mock:  # 94.52%  45.44%
+
+    def __init__(self):
+        self.first = []
+        self.second = []
+        
+
+    def push(self, x: int) -> None:
+        self.first.append(x)
+        self.second = self.first[::-1]
+
+    def pop(self) -> int:
+        cur = self.second.pop()
+        self.first = self.second[::-1]
+        return cur
+
+    def peek(self) -> int:
+        return self.second[-1]
+
+    def empty(self) -> bool:
+        return not(bool(self.second))
+
+
+class MyQueue_best_speed:
+
+    def __init__(self):
+        self.stack_in = []
+        self.stack_out = []
+
+    def push(self, x: int) -> None:
+        self.stack_in.append(x)
+
+    def pop(self) -> int:
+        if self.empty():
+            return None
+        
+        if self.stack_out:
+            return self.stack_out.pop()
+        else:
+            for i in range(len(self.stack_in)):
+                self.stack_out.append(self.stack_in.pop())
+            return self.stack_out.pop()
+
+    def peek(self) -> int:
+        ans = self.pop()
+        self.stack_out.append(ans)
+        return ans
+        
+
+    def empty(self) -> bool:
+        return not (self.stack_in or self.stack_out)
+
+
+class MyQueue_best_memory:
+
+    def __init__(self):
+        self.instack = []
+        self.outstack = []      
+
+    def push(self, x: int) -> None:
+        self.instack.append(x)
+
+    def pop(self) -> int:
+        self._shiftItems()
+        return self.outstack.pop()
+        
+    def peek(self) -> int:
+        self._shiftItems()
+        return self.outstack[-1]
+
+    def empty(self) -> bool:
+        return self.instack == [] and self.outstack == []
+        
+    def _shiftItems(self):
+        if not self.outstack:
+            while self.instack:
+                self.outstack.append(self.instack.pop())

@@ -17,6 +17,19 @@ class Solution:
                 out += 1
         return out
 
+    def rotatedDigits_mock(self, n: int) -> int:  # 56.71% 55.92%
+        good = {'0':'0', '1':'1', '2':'5', '5':'2', '6':'9', '8':'8', '9':'6'}
+        bad = {'3', '4', '7'}
+        out = 0
+        for num in range(1, n+1):
+            cur = str(num)
+            if set(cur) & bad:
+                continue
+            if cur == ''.join([good[x] for x in cur]):
+                continue
+            out += 1
+        return out
+
     def rotatedDigits_best_memory(self, n: int) -> int:
         # 0 -> invalid, 1 -> same number 2 -> mirror
         d = [1, 1, 2, 0, 0, 2, 2, 0, 1, 2]

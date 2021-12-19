@@ -16,3 +16,10 @@ class Solution:
             n -= 1
             dp[0], dp[1] = dp[1], dp[0] + dp[1]
         return dp[0]
+
+    def climbStairs_v3(self, n: int) -> int:  # 94.81% 44.46%
+        a = b = 1
+        while n:
+            n -= 1
+            a, b = a + b, a
+        return b

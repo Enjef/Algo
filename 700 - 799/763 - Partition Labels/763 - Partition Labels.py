@@ -68,3 +68,17 @@ class Solution:
                 ret.append(count)
                 count = 0
         return ret
+
+    def partitionLabels_mock(self, s: str) -> List[int]:  # 70.06% 94.60%
+        index = {}
+        for i, char in enumerate(s):
+            index[char] = i
+        out = []
+        cur_start = 0
+        cur_end = index[s[0]]
+        for i, char in enumerate(s):
+            cur_end = max(cur_end, index[char])
+            if i == cur_end:
+                out.append(cur_end-cur_start+1)
+                cur_start = i+1
+        return out

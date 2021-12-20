@@ -68,3 +68,23 @@ class Solution:
                         queue.append(node.right)
             result.append(levelMax)
         return result             
+
+    def largestValues_mock(
+            self, root: Optional[TreeNode]) -> List[int]:  # 94.18% 58.00%
+        if not root:
+            return None
+        stack = [root]
+        out = []
+        while stack:
+            temp = []
+            row_max = float('-inf')
+            while stack:
+                cur = stack.pop()
+                row_max = max(row_max, cur.val)
+                if cur.left:
+                    temp.append(cur.left)
+                if cur.right:
+                    temp.append(cur.right)
+            out.append(row_max)
+            stack = temp
+        return out

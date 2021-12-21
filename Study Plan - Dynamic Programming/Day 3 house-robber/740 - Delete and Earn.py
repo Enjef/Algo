@@ -18,4 +18,3 @@ class Solution:
         for num in nums:
             dp[num] += num
         return rob(dp)
-        

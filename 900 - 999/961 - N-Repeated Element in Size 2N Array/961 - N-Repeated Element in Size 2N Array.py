@@ -10,10 +10,17 @@ class Solution:
                 return num
         return num
 
+    def repeatedNTimes_mock(self, nums: List[int]) -> int:  # 41.77% 54.64%
+        n = len(nums)//2
+        count = {}
+        for num in nums:
+            count[num] = count.get(num, 0) + 1
+        return [x for x, val in count.items() if val == n][0]
+
     def repeatedNTimes_best(self, nums: List[int]) -> int:
-        d = {}
+        di = set()
         for i in nums:
-            if i not in d:
-                d[i] = 1
-            else:
+            if i in di:
                 return i
+            else:
+                di.add(i)

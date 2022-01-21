@@ -36,3 +36,18 @@ class Solution:
                 out.append([prev, cur])
             prev = cur
         return out
+
+    def minimumAbsDifference_mock(
+            self, arr: List[int]) -> List[List[int]]:  # 89.34% 99.70%
+        diff = float('inf')
+        out = set()
+        arr.sort()
+        for i in range(1, len(arr)):
+            cur = abs(arr[i] - arr[i-1])
+            if cur < diff:
+                diff = cur
+                out.clear()
+                out.add((arr[i-1], arr[i]))
+            elif cur == diff:
+                out.add((arr[i-1], arr[i]))
+        return sorted(out)

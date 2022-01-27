@@ -25,6 +25,24 @@ class Solution:
             stack = temp
         return out
 
+    def rightSideView_mock(
+            self, root: Optional[TreeNode]) -> List[int]:  # 81.01% 100.00%
+        out = []
+        if not root:
+            return out
+        stack = [root]
+        while stack:
+            temp = []
+            while stack:
+                cur = stack.pop(0)
+                if cur.left:
+                    temp.append(cur.left)
+                if cur.right:
+                    temp.append(cur.right)
+            out.append(cur.val)
+            stack = temp
+        return out
+
     def rightSideView_best_speed(self, root: Optional[TreeNode]) -> List[int]:
         if not root:
             return

@@ -15,6 +15,30 @@ class Solution:
             i += 1
         return len(out)
 
+    def lengthOfLongestSubstring_mock(self, s: str) -> int:  # 21.95% 99.65%
+        res = []
+        cur = []
+        for char in s:
+            if char in cur:
+                cur = cur[cur.index(char)+1:]
+            cur.append(char)
+            res = max([res, cur], key=len)
+        return len(res)
+
+    def lengthOfLongestSubstring_dict_left_right(
+            self, s: str) -> int: # 85.22% 23.28%
+        if len(s) <= 1:
+            return len(s)
+        chars = {}
+        left = 0
+        res = 0
+        for right, char in enumerate(s):
+            if char in chars:
+                left = max(left, chars[char]+1)
+            chars[char] = right
+            res = max(res, right-left+1)
+        return res
+
     def lengthOfLongestSubstring_study_plan_day_6(
             self,
             s: str) -> int:  # 36.42% 54.61%

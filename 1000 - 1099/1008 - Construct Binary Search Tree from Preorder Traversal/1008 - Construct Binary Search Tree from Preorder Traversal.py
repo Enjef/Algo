@@ -6,11 +6,10 @@
 #         self.right = right
 class Solution:
     def bstFromPreorder(
-            self, preorder: List[int]) -> Optional[TreeNode]:  # 22.63% 86.91%
+            self, preorder: List[int]) -> Optional[TreeNode]:  # 95.64% 94.06%
         def add_node(value):
             node = root
             while True:
-                print(node.val)
                 if value < node.val:
                     if not node.left:
                         node.left = TreeNode(val=value)

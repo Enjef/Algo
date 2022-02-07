@@ -33,7 +33,6 @@ class Solution:
 
         def helper(s, depth):
             tmp = s.split(chr(depth + 65))
-            # print(tmp)
             root = TreeNode(tmp[0])
             root.left = helper(tmp[1], depth+1) if len(tmp) > 1 else None
             root.right = helper(tmp[2], depth+1) if len(tmp) > 2 else None

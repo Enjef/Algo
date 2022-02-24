@@ -26,7 +26,7 @@ class Solution:
                             perimeter += 1
         return perimeter
 
-    def islandPerimeter(self, grid: List[List[int]]) -> int: # 6.79% 97.48%
+    def islandPerimeter_mock(self, grid) -> int: # 6.79% 97.48%
         out = 0
         n, m = len(grid), len(grid[0])
         y_move = [-1, 0, 0, 1]

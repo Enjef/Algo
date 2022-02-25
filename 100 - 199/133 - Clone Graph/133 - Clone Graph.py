@@ -64,3 +64,21 @@ class Solution_best_memory:
         if node.neighbors:
             clone_node.neighbors = [self.cloneGraph(n) for n in node.neighbors]
         return clone_node
+
+
+from collections import deque
+
+class Solution_2nd_best_memory:
+    def cloneGraph(self, node: 'Node') -> 'Node':
+        if not node: return None
+        visited = {}
+        visited[node] = Node(node.val, [])
+        Q = collections.deque([node])
+        while Q:
+            u = Q.popleft()
+            for v in u.neighbors:
+                if v not in visited:
+                    Q.append(v)
+                    visited[v] = Node(v.val, [])
+                visited[u].neighbors.append(visited[v])
+        return visited[node]

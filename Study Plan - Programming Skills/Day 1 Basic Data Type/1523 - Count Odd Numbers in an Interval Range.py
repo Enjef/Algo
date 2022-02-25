@@ -1,4 +1,4 @@
-class Solution:
+class Solution: # second submit same code 92.06% 99.01%
     def countOdds(self, low: int, high: int) -> int: # 38.21% 84.12%
         return (high-low-int(not(low%2)))//2+1
 

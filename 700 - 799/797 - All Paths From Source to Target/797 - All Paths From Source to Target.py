@@ -27,3 +27,21 @@ class Solution:
         results = []
         count_paths(0, len(graph) - 1, '', graph)
         return results
+
+    def allPathsSourceTarget_best_memory(self, graph):
+        paths = []
+        n = len(graph)
+        seen = []
+        stack = [[0]]
+        while stack:
+            path = stack.pop()
+            node = path[-1]
+            if path not in seen:
+                seen.append(path)
+            if node == n-1:
+                paths.append(path)
+            for v in graph[node]:
+                new_path = path + [v]
+                if not new_path in seen:
+                    stack.append(new_path)
+        return paths

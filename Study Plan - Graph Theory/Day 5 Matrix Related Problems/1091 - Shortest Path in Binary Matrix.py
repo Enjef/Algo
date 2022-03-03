@@ -2,7 +2,6 @@ class Solution:
     def shortestPathBinaryMatrix(self, grid):  # 69.85% 77.05%
         stack = [(0, 0)]
         n = len(grid)
-        way = 10001
         r_dir = [-1, -1, -1, 0, 0, 1, 1, 1]
         c_dir = [-1, 0, 1, -1, 1, -1, 0, 1]
         cur = 1

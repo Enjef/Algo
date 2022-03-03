@@ -30,3 +30,11 @@ class Solution:
                 dfs(c)
         dfs(root)
         return output
+
+    def preorder_best_memory(self, root: 'Node') -> List[int]:
+        if root == None:
+            return []
+        res = [root.val]
+        for node in root.children:
+            res += self.preorder(node)
+        return res

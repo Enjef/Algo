@@ -15,11 +15,11 @@ class Solution:
             i -= 1
         return out
 
-    def freqAlphabets_best(self, s: str) -> str:
+    def freqAlphabets_best_old(self, s: str) -> str:
         d = {}
         for i, c in enumerate(ascii_lowercase, 1):
             d[i] = c
-        s_out = ""
+        s_out = ''
         pointer = len(s)-1
         while pointer >= 0:
             if s[pointer] == '#':
@@ -29,3 +29,15 @@ class Solution:
                 s_out += d[int(s[pointer])]
                 pointer -= 1
         return s_out[::-1]
+
+    def freqAlphabets_best_speed(self, s: str) -> str:
+        ans = ''
+        i = 0
+        while i < len(s):
+            if i + 2 < len(s) and s[i + 2] == '#':
+                ans += chr(int(s[i:i + 2]) + ord('a') - 1)
+                i += 3
+            else:
+                ans += chr(int(s[i]) + ord('a') - 1)
+                i += 1
+        return ans

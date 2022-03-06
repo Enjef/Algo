@@ -17,3 +17,17 @@ class Solution:
             if root.right:
                 stack.append((root.right, False))
         return out_sum
+
+    def sumOfLeftLeaves_best_speed(self, root: Optional[TreeNode]) -> int:
+        self.res = 0
+        
+        def traverse(node, pos):
+            if not node:
+                return
+            if pos == 'left' and not node.left and not node.right:
+                self.res += node.val
+            traverse(node.left, 'left')
+            traverse(node.right, 'right')
+        
+        traverse(root, '')
+        return self.res

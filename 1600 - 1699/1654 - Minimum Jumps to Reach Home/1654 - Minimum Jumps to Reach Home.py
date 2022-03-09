@@ -41,56 +41,49 @@ class Solution:
                     return ans
                 forw, back = pos+a, pos-b
                 if (
-                    back >= 0 and back not in forb and
-                    back not in visit and back <= maxlimit and flag < 1):
-                        tmp.append([back, flag+1])
-                        visit.add(back)
+                        back >= 0 and back not in forb and
+                        back not in visit and back <= maxlimit and flag < 1):
+                    tmp.append([back, flag+1])
+                    visit.add(back)
                 if (
-                    forw >= 0 and forw not in forb and
-                    forw not in visit and forw <= maxlimit):
-                        tmp.append([forw, 0])
-                        visit.add(forw)
+                        forw >= 0 and forw not in forb and
+                        forw not in visit and forw <= maxlimit):
+                    tmp.append([forw, 0])
+                    visit.add(forw)
             ans += 1
             q = tmp
         return -1
 
     def minimumJumps_best_memory(
             self, forbidden: List[int], a: int, b: int, x: int) -> int:
-        
-        
-        q = [[0,0]]
-        
-        k =0 
+        q = [[0, 0]]
+        k = 0
         seen = set()
-       
-        bound = max(max(forbidden)+a+b,x+b)
-        while k<5000 : 
-            
+        bound = max(max(forbidden)+a+b, x+b)
+        while k < 5000:
             child = []
-            
-            while q : 
-                item =q .pop()
-                #print(item)
-                
-                curr,state = item
-                if curr==x : return k
-                if curr in forbidden : continue
+            while q:
+                item = q .pop()
+                curr, state = item
+                if curr == x:
+                    return k
+                if curr in forbidden:
+                    continue
                 fwd = curr+a
-                if fwd in forbidden or  fwd<0 or fwd>bound or fwd in seen: pass
-                else : 
-                    child.append([fwd,0])
+                if fwd in forbidden or fwd < 0 or fwd > bound or fwd in seen:
+                    pass
+                else:
+                    child.append([fwd, 0])
                     seen.add(fwd)
-                
-                if state == 0 : 
+                if state == 0:
                     bwd = curr-b
-                    if bwd in forbidden or  bwd<0 or bwd>bound or bwd in seen : pass
-                    else :
-                        child.append([bwd,1])
+                    if bwd in forbidden or bwd < 0 or bwd > bound or bwd in seen:
+                        pass
+                    else:
+                        child.append([bwd, 1])
                         seen.add(fwd)
-                
-                
-            
-            if not child : return -1 
-            k+=1
-            q = child 
+            if not child:
+                return -1
+            k += 1
+            q = child
         return -1

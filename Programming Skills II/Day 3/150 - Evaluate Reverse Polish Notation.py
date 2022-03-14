@@ -1,5 +1,5 @@
 class Solution:
-    def evalRPN(self, tokens: List[str]) -> int:
+    def evalRPN(self, tokens: List[str]) -> int:  # 9.10% 36.88%
         stack = []
         for token in tokens:
             if token.strip('-+').isdigit():

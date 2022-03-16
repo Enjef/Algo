@@ -26,4 +26,3 @@ class Solution:
 
     def lengthOfLastWord_v2(self, s: str) -> int:  # 85.19% 54.59%
         return len(s.split()[-1])
-

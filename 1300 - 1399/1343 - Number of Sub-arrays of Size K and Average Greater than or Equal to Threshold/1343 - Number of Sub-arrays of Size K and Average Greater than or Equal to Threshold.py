@@ -14,9 +14,9 @@ class Solution:
         count = 0
         current = sum(arr[0:k])
         if current/k >= threshold:
-            count+=1
-        for x in range(k,len(arr)):
+            count += 1
+        for x in range(k, len(arr)):
             current += arr[x] - arr[x-k]
             if current/k >= threshold:
-                count+=1
+                count += 1
         return count

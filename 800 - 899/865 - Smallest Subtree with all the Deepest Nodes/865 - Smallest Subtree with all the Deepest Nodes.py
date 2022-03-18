@@ -49,6 +49,3 @@ class Solution_best_speed:
             return (l_height + 1, left_node)
         else:
             return (r_height + 1, right_node)
-
-
-

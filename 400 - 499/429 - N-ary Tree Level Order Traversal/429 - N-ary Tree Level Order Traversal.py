@@ -38,3 +38,19 @@ class Solution:
                         queue.append(child)
             ans.append(curr_level)
         return ans
+
+    def levelOrder_best_speed_fresh(self, root):
+        if root is None:
+            return None
+        q = [root]
+        next = 0
+        res = []
+        while next < len(q):
+            batch = []
+            for _ in range(len(q) - next):
+                curr = q[next]
+                batch.append(curr.val)
+                q += curr.children
+                next += 1
+            res.append(batch)
+        return res

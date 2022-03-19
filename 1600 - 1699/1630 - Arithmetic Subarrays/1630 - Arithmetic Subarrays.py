@@ -14,3 +14,15 @@ class Solution:
             if is_arithmetic(nums[left[j]:right[j]+1]):
                 out[j] = True
         return out
+
+    def checkArithmeticSubarrays_best_memory(self, nums, l, r):
+        results = [False]*len(l)
+        for i in range(len(l)):
+            subarray = nums[l[i]:r[i]+1]
+            subarray.sort()
+            diff = subarray[1] - subarray[0]
+            j = 2
+            while j < len(subarray) and subarray[j] - subarray[j-1] == diff:
+                j += 1
+            results[i] = j == len(subarray)
+        return results

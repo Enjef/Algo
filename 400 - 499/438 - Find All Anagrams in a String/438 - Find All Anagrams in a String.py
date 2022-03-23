@@ -80,15 +80,11 @@ class Solution:
         m = len(p)
         ph = sum(hash(c) for c in p)
         sh = sum(hash(c) for c in s[:m])
-        
         ans = []
         if ph == sh:
             ans.append(0)
-            
         for i, c in enumerate(s[m:]):
             sh += hash(c) - hash(s[i])
-            
             if ph == sh:
                 ans.append(i+1)
-        
         return ans

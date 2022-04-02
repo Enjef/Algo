@@ -14,16 +14,3 @@ class Solution(object):
             else:
                 right = mid - 1
         return False
-
-    def isPerfectSquare_best_speed(self, n: int) -> bool:
-      l = 1
-      r = n
-      while (l <= r):
-        mid = l + (r-l) // 2
-        if mid*mid == n:
-          return True
-        elif mid * mid < n:
-          l = mid + 1
-        else:
-          r = mid - 1
-      return False

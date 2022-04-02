@@ -1,7 +1,6 @@
 class Solution:
-    def divideString(self, s, k, fill):  # 66.99% 78.93%
+    def divideString(self, s, k, fill):  # 80.19% 78.93%
         out = [s[i:i+k] for i in range(0, len(s), k)]
-        print(out)
         if len(out[-1]) < k:
             out[-1] = ''.join([out[-1], fill*(k-len(out[-1]))])
         return out

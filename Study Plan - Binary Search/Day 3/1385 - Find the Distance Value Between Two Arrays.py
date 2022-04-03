@@ -5,7 +5,7 @@ class Solution:
         for num in arr1:
             left, right = 0, len(arr2)
             while left < right:
-                mid = left + (right-left)//2 
+                mid = left + (right-left)//2
                 if abs(arr2[mid] - num) <= d:
                     count -= 1
                     break

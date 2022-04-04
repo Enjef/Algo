@@ -21,9 +21,22 @@ class Solution:
         first = last = head
         for i in range(1, k):
             first = first.next
-        null_checker = first 
+        null_checker = first
         while null_checker.next:
             last = last.next
             null_checker = null_checker.next
         first.val, last.val = last.val, first.val
+        return head
+
+    def swapNodes_daily(self, head, k):  # 24.77%-83.61% 53.33%
+        first = second = last = head
+        idx = 1
+        while last:
+            if idx < k:
+                first = first.next
+            if idx > k:
+                second = second.next
+            last = last.next
+            idx += 1
+        first.val, second.val = second.val, first.val
         return head

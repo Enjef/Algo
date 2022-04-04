@@ -16,6 +16,15 @@ class Solution:
             j -= 1
         return True
 
+    def validPalindrome_daily(self, s: str) -> bool:  # 79.28% 91.98%
+        n = len(s)
+        for i in range(n//2):
+            if s[i] != s[n-1-i]:
+                first = s[:i] + s[i+1:]
+                second = s[:n-1-i] + s[n-i:]
+                return first == first[::-1] or second == second[::-1]
+        return True
+
     def validPalindrome_best_speed(self, s: str) -> bool:
         helper = lambda s: s == s[::-1]
         i, j, x = 0, len(s) - 1, len(s) >> 1

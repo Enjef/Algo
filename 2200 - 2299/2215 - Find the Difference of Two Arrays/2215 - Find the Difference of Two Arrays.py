@@ -18,6 +18,6 @@ class Solution:
         return [a, b]
 
     def findDifference_best_memory(self, num1, num2):
-        a=list(set(num1)-set(num2))
-        b=list(set(num2)-set(num1))
-        return [a,b]
+        a = list(set(num1)-set(num2))
+        b = list(set(num2)-set(num1))
+        return [a, b]

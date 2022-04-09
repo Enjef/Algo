@@ -1,3 +1,6 @@
+import heapq
+
+
 class KthLargest:
 
     def __init__(self, k: int, nums: List[int]):  # 5.29 %
@@ -23,25 +26,25 @@ class KthLargest:
 # obj = KthLargest(k, nums)
 # param_1 = obj.add(val)
 
-import heapq
+
 class KthLargest_best_speed:
     def __init__(self, k: int, nums: List[int]):
         self.k = k
         self.heap = nums.copy()
         heapq.heapify(self.heap)
-        while len(self.heap)>self.k:
+        while len(self.heap) > self.k:
             heapq.heappop(self.heap)
 
     def add(self, val: int) -> int:
-        if len(self.heap)<self.k:
+        if len(self.heap) < self.k:
             heapq.heappush(self.heap, val)
         else:
             heapq.heappushpop(self.heap, val)
         return self.heap[0]
 
+
 class KthLargest_best_memory:
     def __init__(self, k: int, nums: List[int]):
-        # minHead wiht K largest integers
         self.minHeap, self.k = nums, k
         heapq.heapify(self.minHeap)
         while len(self.minHeap) > k:

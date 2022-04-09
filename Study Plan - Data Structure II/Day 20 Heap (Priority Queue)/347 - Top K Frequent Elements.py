@@ -12,7 +12,7 @@ class Solution:
             d[num] += 1
         h = []
         for key, val in d.items():
-            if not h or len(h) < k: 
+            if not h or len(h) < k:
                 heapq.heappush(h, (val, key))
             else:
                 if h[0][0] < val:
@@ -25,11 +25,11 @@ class Solution:
         return out
 
     def topKFrequent_3d_best_speed(self, nums: List[int], k: int) -> List[int]:
-        freq=collections.Counter(nums)
-        heap=[ (-v,k) for k,v in freq.items() ]
+        freq = collections.Counter(nums)
+        heap = [(-v, k) for k, v in freq.items()]
         heapq.heapify(heap)
-        output=[]
+        output = []
         for i in range(k):
-            v,k = heapq.heappop(heap)
+            v, k = heapq.heappop(heap)
             output.append(k)
-        return output   
+        return output

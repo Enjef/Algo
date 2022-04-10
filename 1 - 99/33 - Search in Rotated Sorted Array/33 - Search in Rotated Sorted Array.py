@@ -10,7 +10,7 @@ class Solution:
                 else:
                     r = m - 1
             return -1
-                
+
         out = -1
         left, right = 0, len(nums)-1
         while left <= right:
@@ -31,7 +31,7 @@ class Solution:
         high = len(nums) - 1
         if (high < 0):
             return -1
-        
+
         mid = high // 2
         if (nums[mid] == target):
             return nums.index(target)
@@ -39,13 +39,13 @@ class Solution:
             return self.recursiveBinarySearch(nums[mid + 1:], target)
         else:
             return self.recursiveBinarySearch(nums[:mid], target)
-                
-    def search_1st_speed(self, nums: List[int], target: int) -> int:        
+
+    def search_1st_speed(self, nums: List[int], target: int) -> int:
         try:
             pivot = nums.index(target)
         except ValueError:
             return -1
-        firstHalf  = nums[:pivot]
+        firstHalf = nums[:pivot]
         secondHalf = nums[pivot + 1:]
         if (target == nums[pivot]):
             return pivot
@@ -65,7 +65,7 @@ class Solution:
                 if nums[mid] <= target <= nums[r]:
                     l = mid + 1
                 else:
-                    r = mid -1
+                    r = mid - 1
             elif nums[l] <= nums[mid]:
                 if nums[l] <= target <= nums[mid]:
                     r = mid - 1

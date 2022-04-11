@@ -36,6 +36,17 @@ class Solution:
                 z += 1
         return grid
 
+    def shiftGrid_daily(self, grid, k):  # 100.00% 35.10%
+        m, n = len(grid), len(grid[0])
+        k %= m * n
+        arr = []
+        for row in grid:
+            arr.extend(row)
+        arr = arr[-k:] + arr[:-k]
+        for i in range(m):
+            grid[i] = arr[i*n:i*n+n]
+        return grid
+
     def shiftGrid_best(self, grid: List[List[int]], k: int) -> List[List[int]]:
         R, C = len(grid), len(grid[0])
         total = []

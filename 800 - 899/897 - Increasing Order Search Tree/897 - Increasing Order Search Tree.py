@@ -21,6 +21,20 @@ class Solution:
             self.helper(root.right, array)
         return array
 
+    def increasingBST_daily(self, root: TreeNode) -> TreeNode:  # 91.17% 90.59%
+        def dfs(node):
+            nonlocal cur
+            if node:
+                dfs(node.left)
+                cur.right = TreeNode(node.val)
+                cur = cur.right
+                dfs(node.right)
+            return
+
+        cur = dummy = TreeNode()
+        dfs(root)
+        return dummy.right
+
     def increasingBST_best(self, root: TreeNode) -> TreeNode:
         s = []
         tree = TreeNode(99)

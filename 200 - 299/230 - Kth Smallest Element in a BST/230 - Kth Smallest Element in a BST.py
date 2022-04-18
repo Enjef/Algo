@@ -21,6 +21,35 @@ class Solution:
         out.sort()
         return out[k-1]
 
+    def kthSmallest_daily(self, root, k):  # 91.37% 48.12%
+        cur, stack = root, []
+        while cur:
+            stack.append(cur)
+            cur = cur.left
+        while cur or stack:
+            if cur:
+                stack.append(cur)
+                cur = cur.left
+            else:
+                cur = stack.pop()
+                k -= 1
+                if k == 0:
+                    return cur.val
+                cur = cur.right
+        return
+
+    def kthSmallest_best_speed_new(self, root: Optional[TreeNode], k: int):
+        stack = []
+        while root or stack:
+            while root:
+                stack.append(root)
+                root = root.left
+            root = stack.pop()
+            k -= 1
+            if k == 0:
+                return root.val
+            root = root.right
+
     def kthSmallest_best_speed(self, root: Optional[TreeNode], k: int) -> int:
         val, new_k = self.findK(root, k)
         if new_k != 0:
@@ -32,7 +61,7 @@ class Solution:
             return (None, k)
         if not root.left and not root.right:
             return (root.val, k - 1)
-        val, new_k = self.findK(root.left, k) 
+        val, new_k = self.findK(root.left, k)
         if new_k == 0:
             return (val, new_k)
         if new_k == 1:

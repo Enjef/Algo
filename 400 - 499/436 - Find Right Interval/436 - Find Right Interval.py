@@ -23,6 +23,27 @@ class Solution:
             result[cur_idx] = intervals[left][2]
         return result
 
+    def findRightInterval_v2(self, intervals):  # 72.64% 70.61%
+        n = len(intervals)
+        result = [-1] * n
+        intervals = sorted(
+            [(start, end, idx) for idx, (start, end) in enumerate(intervals)])
+        for i, (cur_start, cur_end, cur_idx) in enumerate(intervals):
+            left, right = i, n
+            while left < right:
+                mid = (left+right)//2
+                if intervals[mid][0] == cur_end:
+                    left = mid
+                    break
+                if intervals[mid][0] > cur_end:
+                    right = mid
+                else:
+                    left = mid + 1
+            if left == n:
+                continue
+            result[cur_idx] = intervals[left][2]
+        return result
+
     def findRightInterval_best_speed(self, intervals):
         startTimeIdxMap = {x[0]: i for i, x in enumerate(intervals)}
         sortedStartTime = sorted(list(startTimeIdxMap.keys()))

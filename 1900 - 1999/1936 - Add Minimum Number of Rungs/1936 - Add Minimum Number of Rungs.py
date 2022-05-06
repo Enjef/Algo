@@ -29,5 +29,3 @@ class Solution:
             min_rungs += (current - prev - 1)//dist
             prev = current
         return min_rungs
-
-

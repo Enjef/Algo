@@ -22,7 +22,7 @@ class Solution:
 
     def maxAncestorDiff_best_speed(self, root: Optional[TreeNode]) -> int:
         return self.helper(root, root.val, root.val)
-    
+
     def helper(self, node, cur_min, cur_max):
         if not node:
             return cur_max - cur_min

@@ -13,7 +13,7 @@ class Solution:
             if left < right:
                 left = right = 0
         left = right = 0
-        for i in range(n-1,-1,-1):
+        for i in range(n-1, -1, -1):
             if s[i] == ')':
                 right += 1
             else:
@@ -37,6 +37,3 @@ class Solution:
                 else:
                     stack.append(i)
         return res
-
-
-

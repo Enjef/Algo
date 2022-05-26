@@ -17,8 +17,11 @@ class Solution:
             right = f'({self.tree2str(root.right)})'
         return f'{root.val}{left}{right}' if (left or right) else f'{root.val}'
 
-    def tree2str(self, root: TreeNode) -> str:  # 73.54% 67.83%
+    def tree2str_v2(self, root: TreeNode) -> str:  # 73.54% 67.83%
         return str(root.val)+ (f'({self.tree2str(root.left)})' if root.left else '()' if root.right else '') + (f'({self.tree2str(root.right)})' if root.right else '')
+
+    def tree2str_v3(self, root: TreeNode) -> str:  # 36.27% 67.52%
+        return f"{root.val}{f'({self.tree2str(root.left)})' if root.left else '()' if root.right else ''}{f'({self.tree2str(root.right)})' if root.right else ''}"
 
     def tree2str_best_speed(self, root: Optional[TreeNode]) -> str:
         def dfs(root: Optional[TreeNode]) -> str:

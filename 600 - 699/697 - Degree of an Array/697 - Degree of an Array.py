@@ -14,7 +14,7 @@ class Solution:
         for candidate in candidates:
             result = min(result, candidate[2]-candidate[1]+1)
         return result
-        
+
     def findShortestSubArray_best_speed(self, nums: List[int]) -> int:
         left, right, count = {}, {}, {}
         for i, x in enumerate(nums):

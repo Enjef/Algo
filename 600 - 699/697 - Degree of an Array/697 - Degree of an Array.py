@@ -28,3 +28,7 @@ class Solution:
             if count[x] == degree:
                 ans = min(ans, right[x] - left[x] + 1)
         return ans
+
+    # def findShortestSubArray_oneliner_TLE(self, nums: List[int]) -> int:      
+    # TLE 
+    #   return min([len(nums)-nums[::-1].index(x)-1-nums.index(x)+1 for x in [y for y in set(nums) if nums.count(y)==max([nums.count(yy) for yy in set(nums)])]])

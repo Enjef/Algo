@@ -7,7 +7,7 @@ class Solution:
         values = dict(
             zip(
                 sorted(ways, key=lambda x: len(ways[x]), reverse=True),
-                range(n,-1,-1)
+                range(n, -1, -1)
             ))
         seen = set()
         total = 0

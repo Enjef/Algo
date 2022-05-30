@@ -12,6 +12,9 @@ class Solution:
                 break
         return ''.join(out)
 
+    def getSmallestString_v2(self, n: int, k: int) -> str:  # 89.94% 93.50%
+        return 'a'*(n-((k-n)//25)-1) + (n > ((k-n)//25))*chr(ord('a')+(k-n) % 25) + 'z'*((k-n)//25)
+
     def getSmallestString_2nd_best_speed(self, n: int, k: int) -> str:
         d, m = divmod(k-n, 25)
         return 'a' * (n-1-d) + (chr(m+97) if d != n else '') + 'z' * d

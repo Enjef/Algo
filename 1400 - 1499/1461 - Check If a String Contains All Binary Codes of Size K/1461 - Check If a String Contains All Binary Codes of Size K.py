@@ -8,6 +8,15 @@ class Solution:
             test.discard(s[i:i+k])
         return not test
 
+    def hasAllCodes_v2(self, s: str, k: int) -> bool:  # 55.75% 26.11%
+        seen = set()
+        for i in range(len(s)-k+1):
+            seen.add(s[i:i+k])
+        return len(seen) == 2**k
+
+    def hasAllCodes_v3(self, s: str, k: int) -> bool:  # 52.21% 11.50%
+        return len({s[i:i+k] for i in range(len(s)-k+1)}) == 2**k
+
     def hasAllCodes_best_speed(self, s: str, k: int) -> bool:
         need = 2 ** k
         got = set()

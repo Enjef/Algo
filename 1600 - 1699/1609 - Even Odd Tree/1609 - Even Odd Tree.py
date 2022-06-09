@@ -56,7 +56,7 @@ class Solution:
             is_even_row = not is_even_row
         return True
 
-    def isEvenOddTree(self, root: Optional[TreeNode]) -> bool:
+    def isEvenOddTree_best_memory(self, root: Optional[TreeNode]) -> bool:
         queue = []
         is_even = False
         if root:

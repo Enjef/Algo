@@ -25,6 +25,14 @@ class Solution:
     def numberOfPairs_v4(self, nums: List[int]) -> List[int]:
         return [(sum(nums)-sum([i % 2 != 0 for i in nums]))//2 if (nums := Counter(nums).values()) else 0, sum([i % 2 != 0 for i in nums])]
 
+    # 46.15% 61.54%
+    def numberOfPairs_v5(self, nums: List[int]) -> List[int]:
+        return [(sum(nums)-(nums if (nums := sum([i % 2 != 0 for i in nums])) else 0))//2 if (nums := Counter(nums).values()) else 0, nums]
+
+    # 92.31% 61.54%
+    def numberOfPairs_v6(self, nums: List[int]) -> List[int]:
+        return [(sum(nums)-(nums if (nums := sum([i & 1 for i in nums])) else 0))//2 if (nums := Counter(nums).values()) else 0, nums]
+
     def numberOfPairs_best_speed(self, nums: List[int]) -> List[int]:
         freq = Counter(nums)
         return [sum(v//2 for v in freq.values()), sum(v & 1 for v in freq.values())]

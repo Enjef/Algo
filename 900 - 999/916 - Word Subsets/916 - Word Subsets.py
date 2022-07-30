@@ -19,6 +19,10 @@ class Solution:
                 out.append(i)
         return [words1[i] for i in out]
 
+    # 37.14% 8.14%
+    def wordSubsets_v2(self, words1: List[str], words2: List[str]) -> List[str]:
+        return [a for a in words1 if not words2 - Counter(a)] if (words2 := reduce(operator.ior, [Counter(b) for b in words2])) else []
+
     def wordSubsets_best_speed(self, words1: List[str], words2: List[str]) -> List[str]:
         Bfreq, ans, cmax = {}, [], 0
         for word in words2:

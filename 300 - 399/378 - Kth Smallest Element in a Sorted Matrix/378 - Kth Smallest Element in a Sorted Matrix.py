@@ -1,7 +1,6 @@
 class Solution:
-    # 68.17% 80.82%
+    # 73.55% 80.82%
     def kthSmallest(self, matrix: List[List[int]], k: int) -> int:
-        n = len(matrix)
         arr = []
         for row in matrix:
             for el in row:

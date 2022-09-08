@@ -44,6 +44,14 @@ class Solution:
             stack.append((node.left, False))
         return out
 
+    # 67.51% 60.15%
+    def inorderTraversal_oneliner_v1(self, root: Optional[TreeNode]) -> List[int]:
+        return (self.inorderTraversal(root.left) if root else []) + ([root.val] if root else []) + (self.inorderTraversal(root.right) if root else [])
+
+    # 98.48% 60.15%
+    def inorderTraversal_oneliner_v2(self, root: Optional[TreeNode]) -> List[int]:
+        return self.inorderTraversal(root.left) + [root.val] + self.inorderTraversal(root.right) if root else []
+
     def inorderTraversal_best_speed(
             self,
             root: Optional[TreeNode]) -> List[int]:

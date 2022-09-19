@@ -33,7 +33,7 @@ class Solution:
         contentCounts = collections.defaultdict(lambda: 0)
         ans = collections.defaultdict(lambda: [])
         for i in range(len(paths)):
-            strings = paths[i].split(" ")
+            strings = paths[i].split(' ')
             for s in strings:
                 try:
                     content = s[s.index('('):s.index(')') + 1]

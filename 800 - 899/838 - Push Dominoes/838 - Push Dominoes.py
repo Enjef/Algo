@@ -27,6 +27,10 @@ class Solution:
                 result[idx] = 'R'
         return ''.join(result)
 
+    # 47.90% 30.84% (53.51% 30.84%)
+    def pushDominoes_v2(self, dominoes: str) -> str:
+        return dominoes if dominoes == dominoes.replace('R.L', 'X').replace('.L', 'LL').replace('R.', 'RR').replace('X', 'R.L') else self.pushDominoes(dominoes.replace('R.L', 'X').replace('.L', 'LL').replace('R.', 'RR').replace('X', 'R.L'))
+
     def pushDominoes_best_speed(self, dominoes: str) -> str:
         N = len(dominoes)
         d = 'L'

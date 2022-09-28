@@ -31,6 +31,19 @@ class Solution:
     def pushDominoes_v2(self, dominoes: str) -> str:
         return dominoes if dominoes == dominoes.replace('R.L', 'X').replace('.L', 'LL').replace('R.', 'RR').replace('X', 'R.L') else self.pushDominoes(dominoes.replace('R.L', 'X').replace('.L', 'LL').replace('R.', 'RR').replace('X', 'R.L'))
 
+    # 78.84% 36.51% (77.67% 33.26%)
+    def pushDominoes_v3(self, dominoes: str) -> str:
+        return dominoes.replace('X', 'R.L') if dominoes == dominoes.replace('R.L', 'X').replace('.L', 'LL').replace('R.', 'RR') else self.pushDominoes(dominoes.replace('R.L', 'X').replace('.L', 'LL').replace('R.', 'RR'))
+
+    # 94.42% 34.42% (95.58% 34.42%)
+    def pushDominoes_lc_solution_details(self, dominoes: str) -> str:
+        test = dominoes.replace('R.L', 'X') # hiding edge case 'R.L' with 'X'
+        test = test.replace('.L', 'LL')     # falling left
+        test = test.replace('R.', 'RR')     # falling right
+        if test != dominoes:                # falls happened
+            return self.pushDominoes(test)  # continue pushing dominoes
+        return dominoes.replace('X', 'R.L') # no falls - translating 'X' back and returning final result
+
     def pushDominoes_best_speed(self, dominoes: str) -> str:
         N = len(dominoes)
         d = 'L'

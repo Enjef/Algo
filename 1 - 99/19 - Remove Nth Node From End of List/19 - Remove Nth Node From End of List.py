@@ -39,6 +39,18 @@ class Solution:
         slow.next = slow.next.next
         return head
 
+    # 44.12% 70.33% (68.03% 70.33%)
+    def removeNthFromEnd_daily(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+        final = prev = ListNode(next=head)
+        while n:
+            head = head.next
+            n -= 1
+        while head:
+            head = head.next
+            prev = prev.next
+        prev.next = prev.next.next
+        return final.next
+
     def removeNthFromEnd_best_speed(
             self,
             head: Optional[ListNode],

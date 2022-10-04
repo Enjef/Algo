@@ -56,3 +56,9 @@ class Solution_oneliner:
     # 14.63% 91.98%
     def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
         return not root.left and not root.right and (targetSum-root.val==0) or self.hasPathSum(root.left, targetSum-root.val) or self.hasPathSum(root.right, targetSum-root.val) if root else False
+
+
+class Solution_oneliner_v2:
+    # 75.65% 91.98%
+    def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
+        return root and (root.left==root.right and targetSum==root.val or self.hasPathSum(root.left, targetSum-root.val) or self.hasPathSum(root.right, targetSum-root.val))

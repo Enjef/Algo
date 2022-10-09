@@ -18,8 +18,45 @@ class Solution:
             stack.extend([node.right, node.left])
         return False
 
+    # 69.87% 7.70%
+    def findTarget_daily(self, root: Optional[TreeNode], k: int) -> bool:
+        if not root.left and not root.right:
+            return False
+
+        def dfs(node):
+            if not root:
+                return
+            if node.left:
+                yield from dfs(node.left)
+            yield node
+            if node.right:
+                yield from dfs(node.right)
+
+        def target_search(node, second):
+            if not node:
+                return False
+            if node == second:
+                return (
+                    target_search(node.left, second) or
+                    target_search(node.right, second)
+                )
+            if node.val + second.val == k:
+                return True
+            left = right = False
+            if node.left and node.val + second.val > k:
+                left = target_search(node.left, second)
+            if node.right and node.val + second.val < k:
+                right = target_search(node.right, second)
+            return left or right
+
+        for node in dfs(root):
+            if target_search(root, node):
+                return True
+        return False
+
     def findTarget_rec(self, root: TreeNode, k: int) -> bool:  # 38.84% 37.37%
         diff = set()
+
         def dfs(node):
             if not node:
                 return False
@@ -33,8 +70,9 @@ class Solution:
         deque = [root]
         s = set()
         while deque:
-            node=deque.pop(0)
-            if k-node.val in s: return True
+            node = deque.pop(0)
+            if k-node.val in s:
+                return True
             s.add(node.val)
             if node.left:
                 deque.append(node.left)
@@ -46,8 +84,8 @@ class Solution:
         values = []
         stack = []
         stack.append(root)
-        while stack: 
-            node = stack.pop() 
+        while stack:
+            node = stack.pop()
             if True:
                 for i in values:
                     if i + node.val == k:

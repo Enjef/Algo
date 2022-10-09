@@ -18,13 +18,13 @@ class Solution:
             stack.extend([node.right, node.left])
         return False
 
-    # 69.87% 7.70%
+    # 8.58% 13.47% (14.80% 13.47%)
     def findTarget_daily(self, root: Optional[TreeNode], k: int) -> bool:
         if not root.left and not root.right:
             return False
 
         def dfs(node):
-            if not root:
+            if not node:
                 return
             if node.left:
                 yield from dfs(node.left)

@@ -54,6 +54,35 @@ class Solution_v2:
         return res
 
 
+class Solution_v3:
+    # 27.86% 43.25% (87.76% 46.18%)
+    def sumPrefixScores(self, words: List[str]) -> List[int]:
+
+        class Trie:
+            def __init__(self):
+                self.chars = defaultdict(Trie)
+                self.count = 0
+
+        root = Trie()
+        for word in words:
+            node = root
+            for char in word:
+                node = node.chars[char]
+                node.count += 1
+        res = []
+        for word in words:
+            cur = 0
+            node = root
+            for i, char in enumerate(word):
+                node = node.chars[char]
+                if node.count == 1:
+                    cur += len(word)-i
+                    break
+                cur += node.count
+            res.append(cur)
+        return res
+
+
 class Solution_best_memory:
     def sumPrefixScores_best_memory(self, words: List[str]) -> List[int]:
         n = len(words)

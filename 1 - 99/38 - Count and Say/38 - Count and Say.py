@@ -22,10 +22,43 @@ class Solution:
             d_str = temp
         return d_str
 
-# if count = 0 lines 4 to 8 can be removed 
+    # 54.61% 7.99% (72.96% 7.99%)
+    def countAndSay_daily(self, n: int) -> str:
+        if n == 1:
+            return '1'
+        if n == 2:
+            return '11'
+        step = ['1', '1']
+        while n-2:
+            m = len(step)
+            count = 1
+            new = []
+            for i in range(1, m):
+                if step[i] == step[i-1]:
+                    count += 1
+                else:
+                    new.extend([str(count), step[i-1]])
+                    count = 1
+            new.extend([str(count), step[-1]])
+            n -= 1
+            step = new
+        return ''.join(step)
 
-s = '123'
-print(s[0]+s[2]+str(5))
-x = Solution()
-print(x.countAndSay(4))
 
+class Solution_best_speed:
+    def countAndSay(self, n: int) -> str:
+        if n == 1:
+            return '1'
+        str1 = self.countAndSay(n-1)
+        ans = ''
+        ch = str1[0]
+        count = 1
+        for i in range(1, len(str1)):
+            if ch != str1[i]:
+                ans += str(count)+ch
+                ch = str1[i]
+                count = 1
+            else:
+                count += 1
+        ans += str(count) + ch
+        return ans

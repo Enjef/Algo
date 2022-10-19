@@ -16,6 +16,14 @@ class Solution:
                 break
         return out[:k]
 
+    # 88.19% 64.49%
+    def topKFrequent_daily(self, words: List[str], k: int) -> List[str]:
+        count = Counter(words)
+        arr = []
+        for key, val in count.items():
+            heappush(arr, (-val, key))
+        return [heappop(arr)[1] for _ in range(k)]
+
     def topKFrequent_best_speed(self, words: List[str], k: int) -> List[str]:
         c = {}
         for word in words:

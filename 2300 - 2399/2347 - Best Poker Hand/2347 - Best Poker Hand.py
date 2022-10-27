@@ -37,23 +37,23 @@ class Solution_best_speed:
 
     def bestHand_2nd(self, ranks: List[int], suits: List[str]) -> str:
         if len(set(suits)) == 1:
-            return "Flush"
+            return 'Flush'
         set_ranks = sorted([ranks.count(i) for i in set(ranks)])
         if set_ranks[-1] >= 3:
-            return "Three of a Kind"
+            return 'Three of a Kind'
         elif set_ranks[-1] == 2:
-            return "Pair"
+            return 'Pair'
         else:
-            return "High Card"
+            return 'High Card'
 
 
 class Solution_best_memory:
     def bestHand(self, ranks: List[int], suits: List[str]) -> str:
         if len(set(suits)) == 1:
-            return "Flush"
+            return 'Flush'
         m = max(Counter(ranks).values())
         if m >= 3:
-            return "Three of a Kind"
+            return 'Three of a Kind'
         if m == 2:
-            return "Pair"
-        return "High Card"
+            return 'Pair'
+        return 'High Card'

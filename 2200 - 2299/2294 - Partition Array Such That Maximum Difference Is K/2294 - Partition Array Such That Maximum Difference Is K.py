@@ -46,10 +46,10 @@ class Solution_best_memory:
     def partitionArray_2nd_best(self, nums: List[int], k: int) -> int:
         heapify(nums)
         ans = 0
-        high = float("-inf")
+        high = float('-inf')
         while nums:
             x = heappop(nums)
             if x > high:
-                ans +=1
-                high = x + k 
-        return ans 
+                ans += 1
+                high = x + k
+        return ans

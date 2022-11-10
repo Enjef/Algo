@@ -1,8 +1,6 @@
-from string import ascii_lowercase
-
-
 class Solution:
-    def removeDuplicates(self, s: str) -> str:  # slow 5% 7468 ms 34.2 MB
+    # TLE in november 2022
+    def removeDuplicates(self, s: str) -> str:
         for i in range(1, len(s)):
             if s[i-1] == s[i]:
                 return self.removeDuplicates(s[:i-1]+s[i+1:])
@@ -18,11 +16,50 @@ class Solution:
                 stack.append(s_list[i])
         return ''.join(stack)
 
-    def removeDuplicates_best(self, s: str) -> str:
-        duplicates = [2*ch for ch in ascii_lowercase]
-        prev_length = -1
-        while prev_length != len(s):
-            prev_length = len(s)
-            for d in duplicates:
-                s = s.replace(d, '')
-        return s
+    # 49.57% 18.64% (77.11% 18.64%)
+    def removeDuplicates_v3(self, s: str) -> str:
+        stack = []
+        for char in s:
+            if stack and stack[-1] == char:
+                stack.pop()
+            else:
+                stack.append(char)
+        return ''.join(stack)
+
+
+class Solution_best_speed:
+    def removeDuplicates(self, s: str) -> str:
+        string = s
+        stack = []
+        for letter in string:
+            if stack and stack[-1] == letter:
+                stack.pop()
+            else:
+                stack.append(letter)
+        return ''.join(stack)
+
+
+class Solution_best_memory:
+    def removeDuplicates_1st(self, s: str) -> str:
+        s = list(s)
+        i = 0
+        while i < len(s)-1:
+            if s[i] == s[i+1]:
+                s.pop(i)
+                s.pop(i)
+                if i > 0:
+                    i -= 1
+            if i > len(s)-2:
+                return ''.join(s)
+            if s[i] != s[i+1]:
+                i += 1
+        return ''.join(s)
+
+    def removeDuplicates_2nd(self, s: str) -> str:
+        res = []
+        for c in s:
+            if len(res) > 0 and res[-1] == c:
+                res.pop()
+            else:
+                res.append(c)
+        return ''.join(res)

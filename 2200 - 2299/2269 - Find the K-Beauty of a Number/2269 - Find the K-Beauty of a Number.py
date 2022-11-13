@@ -23,14 +23,16 @@ class Solution_best_speed:
     def divisorSubstrings_3d(self, num: int, k: int) -> int:
         count = 0
         nums = str(num)
-        i,j = 0,0
+        i, j = 0, 0
         while j < len(nums):
-            if j - i + 1 < k: j += 1
+            if j - i + 1 < k:
+                j += 1
             else:
                 n = int(nums[i:j+1])
-                if n > 0 and num % n == 0: count += 1
+                if n > 0 and num % n == 0:
+                    count += 1
                 i += 1
-                j += 1        
+                j += 1
         return count
 
 

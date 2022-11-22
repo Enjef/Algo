@@ -27,7 +27,37 @@ class Solution:
             for j in range(n):
                 if (i, j) in guard:
                     helper(i, j)
-        return m*n - len(guard) - len(wall) - len(guarded)
+        return m * n - len(guard) - len(wall) - len(guarded)
+
+    # 84.89% 94.22% (32.89% 88.89%)
+    def countUnguarded_v2(self, m: int, n: int, guards: List[List[int]], walls: List[List[int]]) -> int:
+        def helper(x, y):
+            xx = x - 1
+            while xx > -1 and (xx, y) not in guard and (xx, y) not in wall:
+                guarded.add((xx, y))
+                xx -= 1
+            yy = y - 1
+            while yy > -1 and (x, yy) not in guard and (x, yy) not in wall:
+                guarded.add((x, yy))
+                yy -= 1
+            xx = x + 1
+            while xx < m and (xx, y) not in guard and (xx, y) not in wall:
+                guarded.add((xx, y))
+                xx += 1
+            yy = y + 1
+            while yy < n and (x, yy) not in guard and (x, yy) not in wall:
+                guarded.add((x, yy))
+                yy += 1
+            return
+
+        guard = {(x, y) for x, y in guards}
+        wall = {(x, y) for x, y in walls}
+        guarded = set()
+        for i in range(m):
+            for j in range(n):
+                if (i, j) in guard:
+                    helper(i, j)
+        return m * n - len(guard) - len(wall) - len(guarded)
 
 
 class Solution_best_speed:

@@ -18,6 +18,10 @@ class Solution:
             key for key in sorted(counter) if counter[key]==len(nums)
         ]
 
+    # 34.79% 27.08% (57.50% 6.31%)
+    def intersection_v3(self, nums: List[List[int]]) -> List[int]:
+        return sorted(set.intersection(*[set(x) for x in nums]))
+
     def intersection_best_speed(self, nums: List[List[int]]) -> List[int]:
         ans = set(nums[0])
         for arr in nums[1:]:

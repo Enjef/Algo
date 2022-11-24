@@ -49,6 +49,7 @@ class Solution:
                         good.add((ii, jj))
         return len(good)
 
+
 class Solution_best_speed:
     def countLatticePoints(self, c: List[List[int]]) -> int:
         ans, m = 0, [0]*40401

@@ -32,6 +32,22 @@ class Solution:
                         good.add((ii, jj))
         return len(good)
 
+    # 89.09% 77.73% (85.91% 31.36%)
+    def countLatticePoints_v4(self, circles: List[List[int]]) -> int:
+        good = set()
+        new = dict()
+        for i, j, r in circles:
+            cur = (i, j)
+            if cur not in new:
+                new[cur] = r
+            new[cur] = max(new[cur], r)
+
+        for (i, j), r in new.items():
+            for ii in range(max(0, i-r), min(201, i+r+1)):
+                for jj in range(max(0, j-r), min(201, j+r+1)):
+                    if (ii - i) ** 2 + (jj - j) ** 2 <= r*r:
+                        good.add((ii, jj))
+        return len(good)
 
 class Solution_best_speed:
     def countLatticePoints(self, c: List[List[int]]) -> int:

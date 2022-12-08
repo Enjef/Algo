@@ -1,14 +1,9 @@
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
+from itertools import zip_longest
+
+
 class Solution:
-    def leafSimilar_mock(
-            self,
-            root1: Optional[TreeNode],
-            root2: Optional[TreeNode]) -> bool:  # 71.32% 41.89%
+    # 71.32% 41.89%
+    def leafSimilar_mock(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
         def leaf(root, out):
             if not root.left and not root.right:
                 out.append(root.val)
@@ -19,10 +14,8 @@ class Solution:
             return out
         return leaf(root1, []) == leaf(root2, [])
 
-    def leafSimilar_stack(
-            self,
-            root1: Optional[TreeNode],
-            root2: Optional[TreeNode]) -> bool:  # 69.12% 42.12%
+    # 69.12% 42.12%
+    def leafSimilar_stack(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
         first = []
         second = []
         stack_first = [root1]
@@ -46,10 +39,8 @@ class Solution:
                     stack_second.append(cur_second.right)
         return first == second
 
-    def leafSimilar_stack_helper(
-            self,
-            root1: Optional[TreeNode],
-            root2: Optional[TreeNode]) -> bool:  # 88.65% 71.00%
+    # 88.65% 71.00%
+    def leafSimilar_stack_helper(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
         first = []
         second = []
         stack_first = [root1]
@@ -70,10 +61,94 @@ class Solution:
         if cur.right:
             stack.append(cur.right)
 
-    def leafSimilar_best_memory(
-            self,
-            root1: TreeNode,
-            root2: TreeNode) -> bool:
+    # 78.68% 46.25% (45.41% 87.58%)
+    def leafSimilar_v3(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
+        def leaf_gen(node):
+            if not node.left and not node.right:
+                yield node.val
+            else:
+                if node.left:
+                    yield from leaf_gen(node.left)
+                if node.right:
+                    yield from leaf_gen(node.right)
+
+        return all(a == b for a, b in zip_longest(list(leaf_gen(root1)), list(leaf_gen(root2))))
+        # return list(leaf_gen(root1)) == list(leaf_gen(root2)) #  13.99% 46.25% (68.58% 46.25%)
+
+class Solution_best_speed:
+    def leafSimilar(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
+        def dfs(root: Optional[TreeNode]):
+            if not root:
+                return
+            if not root.left and not root.right:
+                yield root.val
+                return
+            yield from dfs(root.left)
+            yield from dfs(root.right)
+
+        return list(dfs(root1)) == list(dfs(root2))
+
+    def leafSimilar_2nd(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
+        self.root1_seq = []
+        self.root2_seq = []
+        self.traverse(root1, self.root1_seq)
+        self.traverse(root2, self.root2_seq)
+        return self.root1_seq == self.root2_seq
+
+    def traverse(self, root, lists):
+        if root == None:
+            return
+        if root.left == None and root.right == None:
+            lists.append(root.val)
+            return
+        self.traverse(root.left, lists)
+        self.traverse(root.right, lists)
+
+
+class Solution_best_memory:
+    def leafSimilar(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
+        def get_leaf_sequence(root: Optional[TreeNode], result=[]):
+            if not root.left and not root.right:
+                result.append(root.val)
+            if root.left:
+                get_leaf_sequence(root.left, result=result)
+            if root.right:
+                get_leaf_sequence(root.right, result=result)
+            return result
+
+        if (root1 and not root2) or (not root1 and root2):
+            return False
+        if not root1 and not root2:
+            return True
+
+        seq1 = get_leaf_sequence(root1, result=[])
+        seq2 = get_leaf_sequence(root2, result=[])
+        return seq1 == seq2
+
+
+    def leafSimilar_2nd(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
+        leaf1 = []
+        leaf2 = []
+
+        def findLeafs(root, leaf):
+            if not root:
+                return
+            if not root.left and not root.right:
+                leaf.append(root.val)
+                return
+            findLeafs(root.left, leaf)
+            findLeafs(root.right, leaf)
+
+        findLeafs(root1, leaf1)
+        findLeafs(root2, leaf2)
+        if len(leaf1) != len(leaf2):
+            return False
+        for i in range(len(leaf1)):
+            if leaf1[i] != leaf2[i]:
+                return False
+        return True
+
+    def leafSimilar_best_memory_old(self, root1: TreeNode, root2: TreeNode) -> bool:
         def dfs(node):
             if node == None:
                 return []

@@ -20,7 +20,21 @@ class Solution:
             stack = new
         return result
 
-    def maxAncestorDiff_best_speed(self, root: Optional[TreeNode]) -> int:
+
+# 87.72% 7.79% (18.34%  6.31%)
+class Solution_one_liner:
+    def maxAncestorDiff(self, root: Optional[TreeNode], min_val=10**5+1, max_val=0) -> int:
+        return 0 if not root else max(root.val-min_val, max_val-root.val, self.maxAncestorDiff(root.left, min(min_val, root.val), max(max_val, root.val)), self.maxAncestorDiff(root.right, min(min_val, root.val), max(max_val, root.val)))
+
+
+# 53.37% 6.31% (40.05% 6.31%)
+class Solution_one_liner_walrus:
+    def maxAncestorDiff(self, root: Optional[TreeNode], min_val=10**5+1, max_val=0) -> int:
+        return 0 if not root else max(root.val-min_val, max_val-root.val, self.maxAncestorDiff(root.left, min_val:=min(min_val, root.val), max_val:=max(max_val, root.val)), self.maxAncestorDiff(root.right, min_val, max_val))
+
+
+class Solution_best_speed:
+    def maxAncestorDiff(self, root: Optional[TreeNode]) -> int:
         return self.helper(root, root.val, root.val)
 
     def helper(self, node, cur_min, cur_max):
@@ -32,7 +46,9 @@ class Solution:
         right = self.helper(node.right, cur_min, cur_max)
         return max(left, right)
 
-    def maxAncestorDiff_best_memory(self, root):
+
+class Solution_best_memory:
+    def maxAncestorDiff(self, root):
         if not root:
             return 0
         result = -1

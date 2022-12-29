@@ -134,7 +134,7 @@ class Solution_2nd_best_memory:
             ctime = max(ctime, stime)
             res.append(index)
             while tasks:
-                if tasks[0][0]<=ctime+ptime:
+                if tasks[0][0] <= ctime+ptime:
                     ele = heapq.heappop(tasks)
                     heapq.heappush(queue, [ele[1], ele[2], ele[0]])
                 else:

@@ -75,3 +75,13 @@ class Solution(object):
                 if root.left is not None:
                     stack.append(root.left)
         return out
+
+
+# 97.47% 96.79% (92.53% 96.79%)
+class Solution_daily:
+    def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        if not root:
+            return
+        yield root.val
+        yield from self.preorderTraversal(root.left)
+        yield from self.preorderTraversal(root.right)

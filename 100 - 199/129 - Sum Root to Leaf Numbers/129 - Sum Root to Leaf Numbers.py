@@ -33,3 +33,16 @@ class Solution:
             helper(root.right, curr)
         helper(root, '')
         return self.out
+
+
+# 42.08% 95.89%
+class Solution_daily:
+    def sumNumbers(self, root: TreeNode) -> int:
+        def dfs(root, cur):
+            if not root:
+                return 0
+            cur = cur * 10 + root.val
+            if not root.left and not root.right:
+                return cur
+            return dfs(root.left, cur) + dfs(root.right, cur)
+        return dfs(root, 0)
